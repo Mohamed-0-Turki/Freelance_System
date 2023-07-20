@@ -1,0 +1,230 @@
+/* TODO: Start Style Home Page */
+/* http://localhost/freelance/main.php */
+/* 
+    1- Welcome Section     http://localhost/freelance/main.php#
+    2- Features Section    http://localhost/freelance/main.php#features
+    3- About Us Section    http://localhost/freelance/main.php#about
+    4- Contact Us Section  http://localhost/freelance/main.php#Contact
+*/
+.body .container .all-sections {
+  display: grid;
+  grid-template-rows: repeat(4, auto);
+  grid-template-areas: "welcome" "features" "aboutUs" "contactUs";
+}
+/* ? Start Style Welcome Section */
+/* http://localhost/freelance/main.php# */
+.body .container .all-sections .welcome-section {
+  grid-area: welcome;
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                  url("../images/workplace-with-headphones-laptop-evening-copy-space.jpg");
+  background-position: center;
+  background-size: cover;
+  width: auto;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--padding-left-right);
+}
+.body .container .all-sections .welcome-section .welcome-text {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+.body .container .all-sections .welcome-section .welcome-text h1 {
+  font-weight: bold;
+  color: var(--secondary-color);
+  font-size: 100px;
+  font-weight: 900;
+}
+.body .container .all-sections .welcome-section .welcome-text p {
+  max-width: 1400px;
+  color: var(--white-color);
+  font-size: 25px;
+  text-align: center;
+  line-height: 40px;
+}
+@media(max-width: 600px) {
+  .body .container .all-sections .welcome-section .welcome-text h1 {
+      font-size: 60px;
+  }
+  .body .container .all-sections .welcome-section .welcome-text p {
+      font-size: 22px;
+  }
+}
+/* ? End Style Welcome Section */
+/* ? Start Style Features Section */
+/* http://localhost/freelance/main.php#features */
+.body .container .all-sections .features-section {
+  grid-area: features;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  background-color: var(--white-color);
+  padding: 30px var(--padding-left-right);
+}
+.body .container .all-sections .features-section h1 {
+  font-size: 100px;
+  font-weight: 900;
+  color: var(--secondary-color);
+}
+.body .container .all-sections .features-section .container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+.body .container .all-sections .features-section .container .feature {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+  width: calc(90%/2);
+}
+.body .container .all-sections .features-section .container .feature .icon {
+  color: var(--primary-color);
+  font-size: 80px;
+}
+.body .container .all-sections .features-section .container .feature h2 {
+  color: var(--primary-color);
+  font-size: 60px;
+  font-weight: 800;
+}
+.body .container .all-sections .features-section .container .feature p {
+  font-size: 25px;
+  text-align: center;
+  line-height: 40px;
+  opacity: 0.7;
+}
+@media(max-width: 1230px) {
+  .body .container .all-sections .features-section .container .feature {
+      width: 100%;
+  }
+}
+@media(max-width: 600px) {
+  .body .container .all-sections .features-section h1 {
+      font-size: 60px;
+  }
+  .body .container .all-sections .features-section .container .feature h2 {
+      font-size: 40px;
+  }
+  .body .container .all-sections .features-section .container .feature p {
+      font-size: 22px;
+  }
+}
+/* ? End Style Features Section */
+/* ? Start Style About Us Section */
+/* http://localhost/freelance/main.php#Contact */
+.body .container .all-sections .aboutUs-section {
+  grid-area: aboutUs;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  background-color: var(--darkWhite-color);
+  padding: 30px var(--padding-left-right);
+}
+.body .container .all-sections .aboutUs-section h1 {
+  font-size: 100px;
+  font-weight: 900;
+  color: var(--secondary-color);
+}
+.body .container .all-sections .aboutUs-section .container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.body .container .all-sections .aboutUs-section .container .ask {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 23px;
+  padding: 20px 120px 20px 20px;
+  width: calc(100% / 2);
+}
+.body .container .all-sections .aboutUs-section .container .ask h2 {
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--primary-color);
+}
+.body .container .all-sections .aboutUs-section .container .ask p {
+  font-size: 20px;
+  line-height: 40px;
+}
+.body .container .all-sections .aboutUs-section .container .ask p a {
+  color: var(--link-color);
+}
+@media(max-width: 1230px) {
+  .body .container .all-sections .aboutUs-section .container {
+      gap: 35px;
+  }
+  .body .container .all-sections .aboutUs-section .container .ask  {
+      width: 100%;
+      align-items: center;
+      padding: 0;
+  }
+  .body .container .all-sections .aboutUs-section .container .ask p  {
+      text-align: center;
+  }
+}
+@media(max-width: 600px) {
+  .body .container .all-sections .aboutUs-section h1 {
+      font-size: 60px;
+  }
+  .body .container .all-sections .aboutUs-section .container .ask h2 {
+      font-size: 40px;
+  }
+  .body .container .all-sections .aboutUs-section .container .ask p  {
+      font-size: 22px;
+  }
+}
+/* ? End Style About Us Section */
+/* ? Start Syle Contact Us */
+/* http://localhost/freelance/main.php#Contact */
+.body .container .all-sections .contactUs-section {
+  grid-area: contactUs;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 30px var(--padding-left-right);
+  background-color: var(--white-color);
+}
+.body .container .all-sections .contactUs-section h1 {
+  font-size: 100px;
+  font-weight: 900;
+  color: var(--secondary-color);
+}
+.body .container .all-sections .contactUs-section .contactUs-form {
+  height: auto;
+  background-color: var(--white-color);
+}
+.body .container .all-sections .contactUs-section .contactUs-form .contactUs-items {
+  max-width: 550px;
+  padding: 20px;
+  border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 30%);
+}
+@media(max-width: 700px) {
+  .body .container .all-sections .contactUs-section h1 {
+      font-size: 60px;
+  }
+}
+/* ? End Syle Contact Us */
+/* TODO: End Style Home Page */

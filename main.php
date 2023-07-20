@@ -8,8 +8,8 @@
 		$subject = htmlspecialchars($_POST['subject']);
 		$message = htmlspecialchars($_POST['message']);
 		$errors  = [];
-		if (empty($message)) {
-			$errors[] = 'You must enter a message.';
+		if (empty($name) || empty($email) || empty($subject) || empty($message)) {
+			$errors[] = 'All Fields Are Required';
 		}
 		else {
 			if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -63,13 +63,13 @@
 				</div>
 			</section>
 			<section id="features" class="features-section">
-				<h2>features</h2>
+				<h1>features</h1>
 				<div class="container">
 					<div class="feature">
 						<span class="icon">
 							<i class="fa-solid fa-user-tie"></i>
 						</span>
-						<h3>Client</h3>
+						<h2>Client</h2>
 						<p>Freelancing is a type of self-employment. Instead 
 							of being employed by a company, freelancers tend 
 							to work as self-employed, delivering their 
@@ -79,7 +79,7 @@
 						<span class="icon">
 							<i class="fa-solid fa-users"></i>
 						</span>
-						<h3>Freelancer</h3>
+						<h2>Freelancer</h2>
 						<p>Companies of all types and sizes can hire freelancers 
 							to complete a project or a task, but freelancers 
 							are responsible for paying their own taxes, 
@@ -89,55 +89,52 @@
 				</div>
 			</section>
 			<section id="about" class="aboutUs-section">
-				<h2>About Us</h2>
+				<h1>About Us</h1>
 				<div class="container">
 					<div class="ask">
-						<h4>Looking for a job?</h4>
+						<h2>Looking for a job?</h2>
 						<p>If you are searching for a new career opportunity,
 							you can search open vacancies and jobs.You can also
-							<a href="registration.php">sign up</a> 
+							<a href="./registration.php">sign up</a> 
 							here to be alerted of new jobs by email.</p>
 					</div>
 					<div class="ask">
-						<h4>Are you a recruiter or employer?</h4>
+						<h2>Are you a recruiter or employer?</h2>
 						<p>If you are searching for a new career opportunity,
 							you can search open vacancies and jobs.You can also
-							<a href="registration.php">sign up</a> 
+							<a href="./registration.php">sign up</a> 
 							here to be alerted of new jobs by email.</p>
 					</div>
 					<div class="ask">
-						<h4>Other question?</h4>
+						<h2>Other question?</h2>
 						<p>If you have any another question, please contact us.</p>
 					</div>
 				</div>
 			</section>
 			<section id="Contact" class="contactUs-section">
-				<div class="form-pages">
-					<h2>Contact Us</h2>
-					<form action="<?php $_SERVER['PHP_SELF']?>" method="POST">
-						<div class="form-content">
+				<h1>Contact Us</h1>
+				<div class="container-form-login-signup contactUs-form">
+					<div class="items-container contactUs-items">
+						<form action="<?php $_SERVER['PHP_SELF']?>" method="POST">
 							<div class="input-field">
-								<label for="name">Name</label>
+								<span class="icon-input"><i class="fa fa-solid fa-user"></i></span>
 								<input type="text" id="name" name="name" value="<?=htmlspecialchars($name)?>" placeholder="Enter Your Name">
 							</div>
 							<div class="input-field">
-								<label for="email">Email</label>
+								<span class="icon-input"><i class="fa fa-solid fa-envelope"></i></span>
 								<input type="email" id="email" name="email" value="<?=htmlspecialchars($email)?>" placeholder="example@example.com">
 							</div>
 							<div class="input-field">
-								<label for="subject">Subject</label>
-								<input type="text" id="subject" value="<?=htmlspecialchars($subject)?>" name="subject">
+								<span class="icon-input"><i class="fa fa-solid fa-message"></i></span>
+								<input type="text" id="subject" value="<?=htmlspecialchars($subject)?>" name="subject" placeholder="Subject">
 							</div>
-							<div class="input-field">
-								<label for="message">Message</label>
+							<div class="input-field textarea-field">
 								<textarea name="message" id="message" value="<?=htmlspecialchars($message)?>" rows="5" required></textarea>
 							</div>
-						</div>
-						<div class="buttons">
-							<input type="submit" value="Send">
-							<input type="reset" value="Reset">
-						</div>
-					</form>
+							<input id="submit-button" class="button-form-login-signup-reset" type="submit" value="Send">
+							<input class="button-form-login-signup-reset" type="reset" value="Reset">
+						</form>
+					</div>
 				</div>
 			</section>
 		</div>
@@ -145,3 +142,4 @@
 	<?php require $temp . ('footer.php');?>
 </div>
 <?php require $temp . ('end.body.php');?>
+<script>feedbackForm();</script>

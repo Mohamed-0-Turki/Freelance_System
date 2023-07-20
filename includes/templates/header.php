@@ -7,8 +7,11 @@
 	<!-- CSS links -->
 	<link rel="stylesheet" href="<?= $css?>all.css">
 	<link rel="stylesheet" href="<?= $css?>fontawesome.css">
-	<link rel="stylesheet" href="<?= $css?>styl.css">
+	<link rel="stylesheet" href="<?= $css?>style.css">
+	<link rel="stylesheet" href="<?= $css?>nav&footer&scrollbar&colors.css">
+	<link rel="stylesheet" href="<?= $css?>style.home.page.css">
 	<link rel="stylesheet" href="<?= $css?>login&signup.css">
+	<link rel="stylesheet" href="<?= $css?>style.error.messages.css">
 	<title><?= pageTitle();?></title>
 </head>
 <body>

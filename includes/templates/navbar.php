@@ -5,7 +5,7 @@
 	<nav class="navbar">
 		<ul>
 			<!-- Home -->
-			<li><a href="main.php#">Home</a></li>
+			<li><a href="./main.php#">Home</a></li>
 			<!-- Account -->
 			<li>
 				<a>Account <i class="fa-solid fa-caret-down"></i></a>
@@ -13,21 +13,21 @@
 					<?php
 						if (isset($_SESSION['NAME'])) {
 							?>
-								<li><a href="profile.php?UserID=<?=$_SESSION['ID']?>">My Profile</a></li>
-								<li><a href="logout.php">Log out</a></li>
+								<li><a href="./profile.php?UserID=<?=$_SESSION['ID']?>">My Profile</a></li>
+								<li><a href="./logout.php">Log out</a></li>
 							<?php
 						}
 						else {
 							?>
-								<li><a href="login.php">Login</a></li>
-								<li><a href="registration.php">Sign Up</a></li>
+								<li><a href="./login.php">Login</a></li>
+								<li><a href="./registration.php">Sign Up</a></li>
 							<?php
 						}
 					?>
 				</ul>
 			</li>
 			<!-- Browse Jobs -->
-			<li><a href="browseJobs.php">Browse Jobs</a></li>
+			<li><a href="./browseJobs.php">Browse Jobs</a></li>
 			<!-- Dashboard -->
 			<?php
 				if (isset($_SESSION['NAME'])) {
@@ -40,19 +40,19 @@
 									<?php
 										if ($_SESSION['ACCESS'] == 'Admin') {
 											?>
-												<li><a href="users/dashboard.php">Dashboard</a></li>
+												<li><a href="./users/dashboard.php">Dashboard</a></li>
 												<li>
 													<a>Members <i class="fa-solid fa-caret-down"></i></a>
 													<ul>
-														<li><a href="users/members.php?do=Manage&userID=<?php echo $_SESSION['ID']?>">All Members</a></li>
-														<li><a href="users/members.php?do=Add">Add Member</a></li>
+														<li><a href="./users/members.php?do=Manage&userID=<?php echo $_SESSION['ID']?>">All Members</a></li>
+														<li><a href="./users/members.php?do=Add">Add Member</a></li>
 													</ul>
 												</li>
 												<li>
 													<a>Categories <i class="fa-solid fa-caret-down"></i></a>
 													<ul>
-														<li><a href="users/Category.php?do=Manage">All Categories</a></li>
-														<li><a href="users/Category.php?do=Add">Add Category</a></li>
+														<li><a href="./users/category.php?do=Manage">All Categories</a></li>
+														<li><a href="./users/category.php?do=Add">Add Category</a></li>
 													</ul>
 												</li>
 											<?php

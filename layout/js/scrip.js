@@ -1,4 +1,3 @@
-console.log("TURKI");
 // TODO: Start Script Button To Close The Message.
 let itemMessage = document.querySelectorAll(".items-message");
 let iconMessage = Array.from(document.querySelectorAll(".icon-mess-2"));
@@ -14,6 +13,7 @@ iconMessage.forEach((btn) => {
 function loginForm() {
     let inputFields = Array.from(document.querySelectorAll(".container-form-login-signup .items-container form .input-field")),
         inputs = Array.from(document.querySelectorAll(".container-form-login-signup .items-container form .input-field input")),
+        showPassword = document.querySelector(".container-form-login-signup .items-container form .input-field .icon-show-password"),
         submitBtn = document.querySelector(".container-form-login-signup .items-container form #submit-button");
     inputs.forEach(input => {
         input.addEventListener("keyup", () => {
@@ -28,9 +28,22 @@ function loginForm() {
             }
         });
     }
+    showPassword.addEventListener("click", () => {
+        inputs.forEach(input => {
+            if (input.getAttribute("id") === "password") {
+                if (input.getAttribute("type") === "password") {
+                    input.setAttribute("type", "text");
+                }
+                else {
+                    input.setAttribute("type", "password");
+                }
+            }
+        });
+    });
 }
 // TODO: End Validation Form Login.
 
+// TODO: End Validation Form Signup.
 function signupForm() {
     let inputFields = Array.from(document.querySelectorAll(".container-form-login-signup .items-container form .input-field")),
         inputs = Array.from(document.querySelectorAll(".container-form-login-signup .items-container form .input-field input")),
@@ -38,22 +51,32 @@ function signupForm() {
         submitBtn = document.querySelector(".container-form-login-signup .items-container form #submit-button"),
         radioInputs = Array.from(document.querySelectorAll(".container-form-login-signup .items-container form .check .radio-value")),
         phoneNumber = document.querySelector(".container-form-login-signup .items-container form #field-phoneNumber"),
+        showPassword = document.querySelector(".container-form-login-signup .items-container form .input-field .icon-show-password"),
         symbols = ("~!@#$%&*+=|?").split(""),
         symbolIndex = 0;
-
     inputFields.pop();
     inputs.pop();
-
+    showPassword.addEventListener("click", () => {
+        inputs.forEach(input => {
+            if (input.getAttribute("id") === "password") {
+                if (input.getAttribute("type") === "password") {
+                    input.setAttribute("type", "text");
+                }
+                else {
+                    input.setAttribute("type", "password");
+                }
+            }
+        });
+    });
     radioInputs.forEach(radioInput => {
         radioInput.addEventListener("click", () => {
-            phoneNumber.style = radioInput.value === "Freelancer" ? "display: none;" : "dispaly: block;"
+            phoneNumber.style = radioInput.value === "Client" ? "display: none;" : "dispaly: block;"
         })
     });
 
     inputs.forEach(input => {
         input.addEventListener("keyup", () => {
             let index = inputs.indexOf(input);
-
             if (input.getAttribute("id") === "password") {
                 let password = input.value;
                 passwordMethods(password);
@@ -88,7 +111,30 @@ function signupForm() {
         passwordNots[1].style = symbols.includes(password[symbolIndex]) ? "color: rgb(0, 255, 0);" : "color: red;";
         passwordNots[2].style = password.length >= 8 ? "color: rgb(0, 255, 0);" : "color: red;";
     }
+    submitBtn.onclick = (event) => {
+        inputs.forEach(input => {
+            if (input.value.length === 0) {
+                event.preventDefault();
+            }
+        });
+    }
+}
 
+function feedbackForm() {
+    let inputFields = Array.from(document.querySelectorAll(".container-form-login-signup .items-container form .input-field")),
+        inputs = Array.from(document.querySelectorAll(".container-form-login-signup .items-container form .input-field input")),
+        textArea = document.querySelector(".container-form-login-signup .items-container form .input-field textarea"),
+        submitBtn = document.querySelector(".container-form-login-signup .items-container form #submit-button");
+    inputFields.pop();
+    inputs.forEach(input => {
+        input.addEventListener("keyup", () => {
+            let index = inputs.indexOf(input);
+            inputFields[index].style = input.value.length !== 0 ? "border: 2px solid rgb(0, 255, 0);" : "border: 2px solid red;";
+        });
+    });
+    textArea.addEventListener("keyup", () => {
+        textArea.style = textArea.value.length !== 0 ? "border: 2px solid rgb(0, 255, 0);" : "border: 2px solid red;";
+    });
     submitBtn.onclick = (event) => {
         inputs.forEach(input => {
             if (input.value.length === 0) {
@@ -98,4 +144,3 @@ function signupForm() {
     }
 }
 // TODO: End Validation Form signup.
-console.log("TURKI");

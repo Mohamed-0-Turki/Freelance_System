@@ -5,7 +5,7 @@
 	<nav class="navbar">
 		<ul>
 			<!-- Home -->
-			<li><a href="../main.php">Home</a></li>
+			<li><a href="../main.php#">Home</a></li>
 			<!-- Account -->
 			<li>
 				<a>Account <i class="fa-solid fa-caret-down"></i></a>
