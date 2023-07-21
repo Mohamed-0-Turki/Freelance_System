@@ -9,10 +9,16 @@
 	<link rel="stylesheet" href="<?= $css?>fontawesome.css">
 	<link rel="stylesheet" href="<?= $css?>style.css">
 	<link rel="stylesheet" href="<?= $css?>nav&footer&scrollbar&colors.css">
+	<link rel="stylesheet" href="<?= $css?>login.signup.css">
 	<link rel="stylesheet" href="<?= $css?>style.home.page.css">
-	<link rel="stylesheet" href="<?= $css?>login&signup.css">
+	<link rel="stylesheet" href="<?= $css?>style.profile.css">
+	<link rel="stylesheet" href="<?= $css?>style.browse.jobs.css">
+	<link rel="stylesheet" href="<?= $css?>style.all.job.css">
+	<link rel="stylesheet" href="<?= $css?>style.apply.css">
 	<link rel="stylesheet" href="<?= $css?>style.error.messages.css">
 	<link rel="stylesheet" href="<?= $css?>style.animation.css">
+
+	
 	<title><?= pageTitle();?></title>
 </head>
 <body>

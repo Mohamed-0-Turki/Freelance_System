@@ -34,8 +34,11 @@
 						$errors[] = 'You must enter valid email.';
 					}
 					else {
-						if ($userRole == 'Freelancer' && empty($phoneNumber) && !filter_var($phoneNumber, FILTER_VALIDATE_INT)) {
+						if ($userRole === 'Freelancer' && empty($phoneNumber) && !filter_var($phoneNumber, FILTER_VALIDATE_INT)) {
 							$errors[] = 'The freelancer must enter their phone number.';
+						}
+						if (strlen($phoneNumber) > 11) {
+							$errors[] = 'Invalid Phone Number';
 						}
 						else {
 							if ($userRole != 'Freelancer' && empty($phoneNumber)) {

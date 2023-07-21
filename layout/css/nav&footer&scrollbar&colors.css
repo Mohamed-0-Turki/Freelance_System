@@ -83,6 +83,7 @@ body {
 	justify-content: space-between;
 	background-color: var(--primary2-color);
 	padding: 5px var(--padding-left-right);
+  z-index: 1500;
 }
 .header a {
 	cursor: pointer;

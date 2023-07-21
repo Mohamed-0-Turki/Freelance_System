@@ -17,7 +17,8 @@
       $stmt = $CONDB->prepare("INSERT INTO `messages` (`JobPublisher`, `FreelancerID`, `CategoryID`, `JobID`, `FreelancerSkills`, `Date`) VALUES (?, ?, ?, ?, ?, now())");
       $stmt->execute([$JobPublisher, $userID, $categoryID, $jobID, $userSkills]);
       $count = $stmt->rowCount();
-      if ($count == 1) {
+      $stmt = null;
+      if ($count === 1) {
         echo '<div class="messages-in-back">';
           messages('Success', 'You will be contacted upon acceptance of the position.');
         echo '</div>';
@@ -33,23 +34,25 @@
 <div class="body">
   <?php require $temp . ('navbar.php');?>
   <section class="container">
-    <div class="form-pages">
-      <h1 class="form-name">Applying for the job</h1>
-      <form action="<?php $_SERVER['PHP_SELF']?>" method="POST">
-        <div class="form-content">
-          <div class="input-field userSkills">
-            <label for="userSkills">Enter your skills</label>
-            <textarea class="addSkills" name="userSkills" id="userSkills" rows="5" placeholder="Skill - Skill - Skill." required></textarea>
-            <p class="input-notes">! Please put hyphen (-) between each skill.</p>
+    <div class="name-of-page">
+      <h1>Enter Your Skills</h1>
+    </div>
+    <div class="container-form-login-signup apply">
+			<div class="items-container apply-items">
+        <form action="<?php $_SERVER['PHP_SELF']?>" method="POST">
+          <div class="input-field">
+            <textarea name="userSkills" id="userSkills" rows="5" placeholder="Skill - Skill - Skill." required></textarea>
           </div>
-        </div>
-        <div class="buttons">
-          <input type="submit" value="Send">
-          <input type="reset" value="Reset">
-        </div>
-      </form>
+          <div class="notes">
+            <p class="input-notes">! Please put hyphen (-) between each skill.</p>
+			    </div>
+          <input id="submit-button" class="button-form-login-signup-reset" type="submit" value="Send">
+          <input class="button-form-login-signup-reset" type="reset" value="Reset">
+        </form>
+      </div>
     </div>
   </section>
   <?php require $temp . ('footer.php');?>
 </div>
 <?php require $temp . ('end.body.php');?>
+<script>apply();</script>

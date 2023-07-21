@@ -84,7 +84,7 @@
 			<!-- About Us -->
 			<li><a href="main.php#about">About Us</a></li>
 			<!-- Contact Us -->
-			<li><a href="main.php#Contact">Contact Us</a></li>
+			<li><a href="main.php#contact">Contact Us</a></li>
 		</ul>
 	</nav>
 </header>

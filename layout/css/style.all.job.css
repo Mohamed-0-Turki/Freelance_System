@@ -1,0 +1,131 @@
+/* TODO: Start Style Cards Of Jobs */
+/* http://localhost/freelance/allJobs.php */
+.body .container .section-job {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 15px;
+  background-color: var(--darkWhite-color);
+  margin: 25px;
+  padding: 20px;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+}
+.body .container .section-job .section-one {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+
+}
+.body .container .section-job .section-one .section-title .title {
+  font-size: 35px;
+  font-weight: 600;
+  color: var(--primary2-color);
+}
+.body .container .section-job .section-one .section-title .title::first-letter {
+  font-size: 60px;
+  font-weight: 700;
+  color: var(--secondary-color);
+}
+.body .container .section-job .section-one .section-date .date {
+  font-size: 17px;
+  opacity: 0.8;
+}
+.body .container .section-job .section-two {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+.body .container .section-job .section-two .section-salary .salary {
+  font-size: 20px;
+}
+.body .container .section-job .section-two .section-publisher .publisher {
+  font-size: 20px;
+}
+.body .container .section-job .section-one .section-date .date span,
+.body .container .section-job .section-two .section-salary .salary span,
+.body .container .section-job .section-two .section-publisher .publisher span,
+.body .container .section-job .section-three .section-description .description span,
+.body .container .section-job .section-four .section-skills span {
+  font-size: 23px;
+  font-weight: 500;
+  color: var(--red-color);
+}
+
+.body .container .section-job .section-three .section-description .description {
+  font-size: 18px;
+  line-height: 25px;
+}
+.body .container .section-job .section-four {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 10px 10px 10px;
+}
+.body .container .section-job .section-four .section-skills ol {
+  padding-top: 10px;
+  padding-left: 30px;
+  font-size: 18px;
+}
+.body .container .section-job .section-four .section-skills ol li {
+  padding-top: 3px;
+}
+.body .container .section-job .section-five {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 10px 10px 10px;
+}
+.body .container .section-job .section-five .button-apply {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--link-color);
+  padding: 10px;
+  height: 35px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+.body .container .section-job .section-five .button-apply.disabled {
+  opacity: 0.6;
+}
+.body .container .section-job .section-five .button-apply.disabled:hover {
+  cursor: auto;
+  background-color: var(--link-color);
+  opacity: 0.6;
+}
+.body .container .section-job .section-five .button-apply:hover {
+  cursor: pointer;
+  background-color: #0000c9;
+}
+.body .container .section-job .section-five .button-apply a {
+  color: var(--white-color);
+  text-align: center;
+}
+@media(max-width: 400px) {
+  .body .container .section-job .section-two .section-salary .salary span,
+  .body .container .section-job .section-one .section-date .date span,
+  .body .container .section-job .section-three .section-description .description span,
+  .body .container .section-job .section-four .section-skills span {
+      font-size: 18px;
+  }
+  .body .container .section-job .section-one .section-title .title {
+      font-size: 25px;
+  }
+  .body .container .section-job .section-one .section-title .title::first-letter {
+      font-size: 30px;
+  }
+}
+/* TODO: End Style Cards Of Jobs */

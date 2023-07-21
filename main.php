@@ -12,7 +12,7 @@
 			$errors[] = 'All Fields Are Required';
 		}
 		else {
-			if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 				$errors[] = 'You must enter valid email.';
 			}
 		}
@@ -111,7 +111,7 @@
 					</div>
 				</div>
 			</section>
-			<section id="Contact" class="contactUs-section">
+			<section id="contact" class="contactUs-section">
 				<h1>Contact Us</h1>
 				<div class="container-form-login-signup contactUs-form">
 					<div class="items-container contactUs-items">

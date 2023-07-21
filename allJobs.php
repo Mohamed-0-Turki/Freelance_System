@@ -1,6 +1,6 @@
 <?php
 	session_start();
-  $_GET['categoryName'] = isset($_GET['categoryName']) ? $_GET['categoryName'] : '';
+  $_GET['categoryName'] = isset($_GET['categoryName']) ? $_GET['categoryName'] : 'All Jobs';
 	$pageTitle = 'Category' . ' ' . $_GET['categoryName'];
 	require('initialize.php');
 ?>
@@ -26,7 +26,7 @@
       }
       else {
         if (isset($_GET['submit'])) {
-          if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+          if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $job = htmlspecialchars($_GET['searchJob']);
             $stmt = $CONDB->prepare("SELECT
                                             `jobs`.*,
@@ -38,7 +38,7 @@
                                           ON
                                             `users`.`ID` = `jobs`.`MemberID`
                                         WHERE
-                                            `JobTitle` = ?");
+                                            `JobTitle` LIKE '%' ? '%'");
             $stmt->execute([$job]);
             $rows = $stmt->fetchAll();
             $count = $stmt->rowCount();
@@ -162,7 +162,7 @@
         if (isset($_GET['submit']) && $count == 0) {
           echo '<div class="messages-in-back">';
             messages('Warning', 'There is no job with this title.');
-            echo '</div>';
+          echo '</div>';
           include $pages . ('loader.html');
           header('refresh:5,allJobs.php');
           exit();

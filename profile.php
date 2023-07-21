@@ -15,24 +15,26 @@
       $count = $stmt->rowCount();
       $stmt = null;
       if ($count == 1) {
-        messages('Success', 'You have now deleted your account.');
+        echo '<div class="messages-in-back">';
+          messages('Success', 'You have now deleted your account.');
+        echo '</div>';
         header('Location: ./logout.php');
         exit();
       }
       else {
-        messages('Denger', 'This account cannot be deleted.');
-        header("Location: ./profile.php?UserID=$id");
-        exit();
+        echo '<div class="messages-in-back">';
+          messages('Denger', 'This account cannot be deleted.');
+        echo '</div>';
       }
     }
     else {
-      messages('Denger', 'THIS account IS NOT EXIST.');
-      header('Location: ./logout.php');
-      exit();
+      echo '<div class="messages-in-back">';
+        messages('Denger', 'THIS account IS NOT EXIST.');
+      echo '</div>';
     }
   }
   //! End Delete Data.
-  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id 				 = filter_var($_SESSION['ID'], FILTER_SANITIZE_NUMBER_INT);
     $name 			 = htmlspecialchars($_POST['name']);
     $email 			 = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
@@ -56,6 +58,9 @@
         else {
           if ($userRole === 'Freelancer' && empty($phoneNumber) && !filter_var($phoneNumber, FILTER_VALIDATE_INT)) {
             $errors[] = 'The freelancer must enter their phone number.';
+          }
+          if (strlen($phoneNumber) > 11) {
+            $errors[] = 'Invalid Phone Number';
           }
           else {
             if ($userRole !== 'Freelancer' && empty($phoneNumber)) {
@@ -106,7 +111,7 @@
         foreach ((array)$errors as $error) {
           messages('Warning', $error);
         }
-        echo '</div>';
+      echo '</div>';
     }
     else {
       $stmt = $CONDB->prepare("SELECT * FROM
@@ -137,14 +142,14 @@
         $count = $stmt->rowCount();
         $stmt = null;
         if ($count === 1) {
-          messages('Success', 'The data has been updated successfully.');
-          header("Location: ./profile.php?UserID=$id");
-          exit();
+          echo '<div class="messages-in-back">';
+            messages('Success', 'The data has been updated successfully.');
+          echo '</div>';
         }
         else {
-          messages('Denger', 'This user cannot be updated.');
-          header("Location: ./profile.php?UserID=$id");
-          exit();
+          echo '<div class="messages-in-back">';
+            messages('Denger', 'This user cannot be updated.');
+          echo '</div>';
         }
       }
     }
@@ -197,15 +202,19 @@
           <?php
         }
         else {
-          messages('Warning', 'There is no data for this user.');
+          echo '<div class="messages-in-back">';
+            messages('Warning', 'There is no data for this user.');
+          echo '</div>';
           header('Location: ./logout.php');
           exit();
         }
       }
       else {
+        echo '<div class="messages-in-back">';
           messages('Warning', 'YOU CAN\'T ACCESS THIS PAGE.');
-          header('Location: ./logout.php');
-          exit();
+        echo '</div>';
+        header('Location: ./logout.php');
+        exit();
       }
     ?>
 	</section>

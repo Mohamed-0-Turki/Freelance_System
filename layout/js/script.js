@@ -121,6 +121,7 @@ function signupForm() {
 }
 // TODO: End Validation Form signup.
 
+// TODO: Start Validation Feed back Form.
 function feedbackForm() {
     let inputFields = Array.from(document.querySelectorAll(".container-form-login-signup .items-container form .input-field")),
         inputs = Array.from(document.querySelectorAll(".container-form-login-signup .items-container form .input-field input")),
@@ -144,8 +145,9 @@ function feedbackForm() {
         });
     }
 }
+// TODO: End Validation Feed back Form.
 
-
+// TODO: Start Validation Profile Form.
 function myProfile() {
     let inputFields = Array.from(document.querySelectorAll(".container-form-login-signup .items-container form .input-field")),
         inputs = Array.from(document.querySelectorAll(".container-form-login-signup .items-container form .input-field input")),
@@ -154,7 +156,6 @@ function myProfile() {
     inputFields.pop();
     inputs.splice(2, 1);
     inputs.pop();
-
 
     inputs.forEach(input => {
         input.addEventListener("keyup", () => {
@@ -175,3 +176,22 @@ function myProfile() {
         });
     });
 }
+// TODO: End Validation Profile Form.
+
+// TODO: Start Validation Apply Form.
+
+function apply() {
+    let textArea = document.querySelector(".container-form-login-signup .items-container form .input-field textarea"),
+        submitBtn = document.querySelector(".container-form-login-signup .items-container form #submit-button");
+    console.log(submitBtn);
+    textArea.addEventListener("keyup", () => {
+        textArea.style = textArea.value.length !== 0 ? "border: 2px solid rgb(0, 255, 0);" : "border: 2px solid red;";
+    });
+    submitBtn.onclick = (event) => {
+        if (textArea.value.length === 0) {
+            event.preventDefault();
+        }
+    }
+}
+
+// TODO: End Validation Apply Form.
