@@ -2,6 +2,7 @@
 .messages-in-back {
   margin-left: 15px;
   position: absolute;
+  z-index: 10000;
 }
 .items-message {
   display: flex;

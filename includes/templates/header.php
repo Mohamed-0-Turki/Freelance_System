@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="<?= $css?>style.home.page.css">
 	<link rel="stylesheet" href="<?= $css?>login&signup.css">
 	<link rel="stylesheet" href="<?= $css?>style.error.messages.css">
+	<link rel="stylesheet" href="<?= $css?>style.animation.css">
 	<title><?= pageTitle();?></title>
 </head>
 <body>

@@ -113,8 +113,7 @@
 						echo '<div class="messages-in-back">';
 							messages('Success', 'The account has been created. You will be directed to the members page.');
 						echo '</div>';
-						include $pages . ('loader.html');
-						header('refresh:2; ./login.php');
+						header('Location: ./login.php');
 						exit();
 					}
 					else {

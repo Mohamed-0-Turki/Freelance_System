@@ -119,6 +119,7 @@ function signupForm() {
         });
     }
 }
+// TODO: End Validation Form signup.
 
 function feedbackForm() {
     let inputFields = Array.from(document.querySelectorAll(".container-form-login-signup .items-container form .input-field")),
@@ -143,4 +144,34 @@ function feedbackForm() {
         });
     }
 }
-// TODO: End Validation Form signup.
+
+
+function myProfile() {
+    let inputFields = Array.from(document.querySelectorAll(".container-form-login-signup .items-container form .input-field")),
+        inputs = Array.from(document.querySelectorAll(".container-form-login-signup .items-container form .input-field input")),
+        showPassword = document.querySelector(".container-form-login-signup .items-container form .input-field .icon-show-password");
+
+    inputFields.pop();
+    inputs.splice(2, 1);
+    inputs.pop();
+
+
+    inputs.forEach(input => {
+        input.addEventListener("keyup", () => {
+            let index = inputs.indexOf(input);
+            inputFields[index].style = input.value.length !== 0 ? "border: 2px solid rgb(0, 255, 0);" : "border: 2px solid red;";
+        });
+    });
+    showPassword.addEventListener("click", () => {
+        inputs.forEach(input => {
+            if (input.getAttribute("id") === "password") {
+                if (input.getAttribute("type") === "password") {
+                    input.setAttribute("type", "text");
+                }
+                else {
+                    input.setAttribute("type", "password");
+                }
+            }
+        });
+    });
+}

@@ -13,7 +13,7 @@
 		else {
 			$email 			= filter_var(sanitize_data($_POST['email']), FILTER_SANITIZE_EMAIL);
 			$password  	= sanitize_data($_POST['password']);
-			@$remmberMe = sanitize_data($_POST['remmberMe']);
+			@$remmberMe = $_POST['remmberMe'];
 			if (empty($email) && empty($password)) {
 				echo '<div class="messages-in-back">';
 					messages('Warning', 'Enter your email and password.');
@@ -53,7 +53,7 @@
 									setcookie('NAME', $row['Name'], time() + 60*60*24*30*12, '/');
 									setcookie('ACCESS', $row['UserRole'], time() + 60*60*24*30*12, '/');
 									setcookie('EMAIL', $email, time() + 60*60*24*30*12, '/');
-									header('Location: ./index.php');
+									header('Location: index.php');
 									exit();
 								}
 								else {

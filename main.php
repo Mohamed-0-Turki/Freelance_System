@@ -142,4 +142,5 @@
 	<?php require $temp . ('footer.php');?>
 </div>
 <?php require $temp . ('end.body.php');?>
+<script src="<?= $js?>animation.js"></script>
 <script>feedbackForm();</script>
