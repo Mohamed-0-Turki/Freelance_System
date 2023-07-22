@@ -7,7 +7,8 @@
 	<!-- CSS links -->
 	<link rel="stylesheet" href="<?= $css?>all.css">
 	<link rel="stylesheet" href="<?= $css?>fontawesome.css">
-	<link rel="stylesheet" href="<?= $css?>style.css">
+	<link rel="stylesheet" href="<?= $css?>styleee.css">
+	<link rel="stylesheet" href="<?= $css?>all.forms.css">
 	<title><?php pageTitle();?></title>
 </head>
 <body>

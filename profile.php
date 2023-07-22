@@ -195,7 +195,7 @@
                 </div>
                 <input class="button-form-login-signup-reset" id="submit-button" type="submit" value="Update">
                 <input class="button-form-login-signup-reset" type="reset" value="Reset">
-                <a class="button-form-login-signup-reset delete-btn" href="profile.php?do=Delete&UserID=<?= $_SESSION['ID']?>">Delete My Account</a>
+                <a class="button-form-login-signup-reset delete-btn" href="./profile.php?do=Delete&UserID=<?=$_SESSION['ID']?>">Delete My Account</a>
               </form>
             </div>
           </div>

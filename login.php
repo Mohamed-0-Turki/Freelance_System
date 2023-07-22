@@ -95,7 +95,7 @@
 ?>
 <div class="container-form-login-signup">
 	<div class="items-container">
-		<h1>Login | <a href="main.php">Freelance</a></h1>
+		<h1>Login | <a href="./main.php">Freelance</a></h1>
 		<form action="<?php $_SERVER['PHP_SELF']?>" method="POST">
 			<div class="input-field">
 				<span class="icon-input"><i class="fa-solid fa-envelope"></i></span>

@@ -10,19 +10,18 @@
 			<li>
 				<h5>Company</h5>
 				<div class="links-footer">
-					<a href="main.php#">Home</a>
-					<a href="main.php#features">Features</a>
-					<a href="main.php#about">About Us</a>
-					<a href="main.php#Contact">Contact Us</a>
+					<a href="./main.php#">Home</a>
+					<a href="./main.php#features">Features</a>
+					<a href="./main.php#about">About Us</a>
+					<a href="./main.php#Contact">Contact Us</a>
 				</div>
 			</li>
 			<li>
 				<h5>Social</h5>
-				<span><a href=""><i class="fa-brands fa-square-facebook"></i></a></span>
-				<span><a href=""><i class="fa-brands fa-square-instagram"></i></a></span>
-				<span><a href=""><i class="fa-brands fa-square-google-plus"></i></a></span>
-				<span><a href=""><i class="fa-brands fa-linkedin"></i></a></span>
-				<span><a href=""><i class="fa-brands fa-square-github"></i></a></span>
+				<span><a href="https://www.facebook.com/profile.php?id=100007603683057&mibextid=ZbWKwL"><i class="fa-brands fa-square-facebook"></i></a></span>
+				<span><a href="https://instagram.com/mohamed_tarek_545?igshid=NGExMmI2YTkyZg=="><i class="fa-brands fa-square-instagram"></i></a></span>
+				<span><a href="https://linkedin.com/in/mohamed-turki-913231262"><i class="fa-brands fa-linkedin"></i></a></span>
+				<span><a href="https://github.com/Mohamed-0-Turki"><i class="fa-brands fa-square-github"></i></a></span>
 			</li>
 		</ul>
 	</div>

@@ -124,11 +124,11 @@
                       <div class="section-five">
                         <div class="button-apply">
                           <a
-                            href="apply.php?
-                                            userID=<?= $_SESSION['ID']?>
-                                            &JobPublisher=<?= $row['MemberID']?>
-                                            &categoryID=<?= $row['CatID']?>
-                                            &jobID=<?= $row['JobID']?>"
+                            href="./apply.php?
+                                            userID=<?=$_SESSION['ID']?>
+                                            &JobPublisher=<?=$row['MemberID']?>
+                                            &categoryID=<?=$row['CatID']?>
+                                            &jobID=<?=$row['JobID']?>"
                                             target="_blank">Apply For Job</a>
                         </div>
                       </div>
@@ -148,7 +148,7 @@
                   ?>
                     <div class="section-five">
                       <div class="button-apply">
-                        <a href="login.php">Login As Freelancer for Apply</a>
+                        <a href="./login.php">Login As Freelancer for Apply</a>
                       </div>
                     </div>
                   <?php

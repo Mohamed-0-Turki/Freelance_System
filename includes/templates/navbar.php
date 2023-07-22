@@ -1,5 +1,5 @@
 <header class="header">
-	<a href="main.php" class="site-name">freelance</a>
+	<a href="./main.php#" class="site-name">freelance</a>
 	<input type="checkbox" id="menu-bar">
 	<label class="menu-bar" for="menu-bar"><i class="fa-solid fa-bars"></i></label>
 	<nav class="navbar">
@@ -31,8 +31,8 @@
 			<!-- Dashboard -->
 			<?php
 				if (isset($_SESSION['NAME'])) {
-					if ($_SESSION['ACCESS'] == 'Admin' || $_SESSION['ACCESS'] == 'Client') {
-						$dashboardName = isset($_SESSION['ACCESS']) && $_SESSION['ACCESS'] == 'Admin' ? 'Dashboard' : 'Jobs | Messages';
+					if ($_SESSION['ACCESS'] === 'Admin' || $_SESSION['ACCESS'] === 'Client') {
+						$dashboardName = isset($_SESSION['ACCESS']) && $_SESSION['ACCESS'] === 'Admin' ? 'Dashboard' : 'Jobs | Messages';
 						?>
 							<li>
 								<a><?=$dashboardName?> <i class="fa-solid fa-caret-down"></i></a>
@@ -44,7 +44,7 @@
 												<li>
 													<a>Members <i class="fa-solid fa-caret-down"></i></a>
 													<ul>
-														<li><a href="./users/members.php?do=Manage&userID=<?php echo $_SESSION['ID']?>">All Members</a></li>
+														<li><a href="./users/members.php?do=Manage&userID=<?=$_SESSION['ID']?>">All Members</a></li>
 														<li><a href="./users/members.php?do=Add">Add Member</a></li>
 													</ul>
 												</li>
@@ -62,17 +62,17 @@
 										<a>Jobs <i class="fa-solid fa-caret-down"></i></a>
 										<ul>
 											<?php
-												if ($_SESSION['ACCESS'] == 'Admin') {
+												if ($_SESSION['ACCESS'] === 'Admin') {
 													?>
-														<li><a href="users/jobs.php?do=Manage&AccessControl=AllJobs">All Jobs</a></li>
+														<li><a href="./users/jobs.php?do=Manage&AccessControl=AllJobs">All Jobs</a></li>
 													<?php
 												}
 											?>
-											<li><a href="users/jobs.php?do=Manage">My Jobs</a></li>
-											<li><a href="users/jobs.php?do=Add">Add Job</a></li>
+											<li><a href="./users/jobs.php?do=Manage">My Jobs</a></li>
+											<li><a href="./users/jobs.php?do=Add">Add Job</a></li>
 										</ul>
 									</li>
-									<li><a href="users/messages.php">Messages</a></li>
+									<li><a href="./users/messages.php">Messages</a></li>
 								</ul>
 							</li>
 						<?php
@@ -80,11 +80,11 @@
 				}
 			?>
 			<!-- Features -->
-			<li><a href="main.php#features">Features</a></li>
+			<li><a href="./main.php#features">Features</a></li>
 			<!-- About Us -->
-			<li><a href="main.php#about">About Us</a></li>
+			<li><a href="./main.php#about">About Us</a></li>
 			<!-- Contact Us -->
-			<li><a href="main.php#contact">Contact Us</a></li>
+			<li><a href="./main.php#contact">Contact Us</a></li>
 		</ul>
 	</nav>
 </header>

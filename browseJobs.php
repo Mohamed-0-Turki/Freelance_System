@@ -18,7 +18,7 @@
         if ($count > 0) {
           foreach ($rows as $row) {
             ?>
-              <a href="allJobs.php?categoryName=<?= $row['CategoryName']?>&categoryID=<?= $row['CategoryID']?>" class="link-card">
+              <a href="./allJobs.php?categoryName=<?=$row['CategoryName']?>&categoryID=<?=$row['CategoryID']?>" class="link-card">
                 <div class="card">
                   <div class="card-img">
                     <img class="img" src="users/admin/data/upload/images/categoryImages/<?= $row['CategoryPhoto']?>"alt=""/>

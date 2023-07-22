@@ -10,40 +10,37 @@
 				if (isset($_SESSION['NAME'])) {
 					$do = isset($_GET['do']) ? $_GET['do'] : 'Manage';
 					//! Start Manage Page.
-					if ($do == 'Manage') {
-						// An array containing the types of users.
+					if ($do === 'Manage') {
 						$usersArray = ['Admin', 'Client', 'Freelancer'];
-						// in_array() -> Checks if a value exists in an array.
 						if (isset($_GET['users']) && in_array($_GET['users'], $usersArray)) {
-							if ($_GET['users'] == 'Client') {
+							if ($_GET['users'] === 'Client') {
 								$whereStmt = "`UserRole` = 'Client'";
 							}
 							else {
-								if ($_GET['users'] == 'Freelancer') {
+								if ($_GET['users'] === 'Freelancer') {
 									$whereStmt = "`UserRole` = 'Freelancer'";
 								}
 								else {
 									$whereStmt = "`UserRole` = 'Admin'";
 								}
 							}
-							// SQL query [SELECT].
 							$stmt = $CONDB->prepare("SELECT * FROM `users` WHERE $whereStmt");
-							// execute query.
 							$stmt->execute();
-							// fetchAll() -> Fetches the remaining rows from a result set
 							$rows = $stmt->fetchAll();
 						}
 						else {
 							if (isset($_GET['submit'])) {
 								$email = filter_var($_GET['searchUser'], FILTER_SANITIZE_EMAIL);
-								$stmt = $CONDB->prepare("SELECT * FROM `users` WHERE `Email` = ?");
+								$stmt = $CONDB->prepare("SELECT * FROM `users` WHERE `Email` LIKE '%' ? '%'");
 								$stmt->execute([$email]);
 								$count = $stmt->rowCount();
-								if ($count == 1) {
+								if ($count > 0) {
 									$rows = $stmt->fetchAll();
 								}
 								else {
-									messages('Warning', 'There is no email you entered.');
+									echo '<div class="messages-in-back">';
+										messages('Warning', 'There is no email you entered.');
+									echo '</div>';
 									$stmt = $CONDB->prepare("SELECT * FROM `users`");
 									$stmt->execute();
 									$rows = $stmt->fetchAll();
@@ -62,7 +59,7 @@
 						<!--Box All Users -->
 						<div class="details">
 							<div class="box">
-								<a href="members.php?do=Manage&userID=<?php echo $_SESSION['ID']?>">
+								<a href="./members.php?do=Manage&userID=<?=$_SESSION['ID']?>">
 									<span class="icon"><i class="fa-solid fa-users"></i></span>
 									<p class="num"><?php counter('users', "");?></p>
 									<p class="box-name">All Users</p>
@@ -94,7 +91,7 @@
 							</div>
 							<!--Box Add New Member -->
 							<div class="box">
-								<a href="members.php?do=Add">
+								<a href="./members.php?do=Add">
 									<span class="icon"><i class="fa-solid fa-user-plus"></i></span>
 									<p class="box-name">Add New Member</p>
 								</a>
@@ -151,56 +148,54 @@
 					}
 					//! End Manage Page.
 					//! Start Add Member Page.
-					elseif ($do == 'Add') {
+					elseif ($do === 'Add') {
 						?>
-						<div class="form-pages">
-							<h1 class="form-name">Add New Member</h1>
+					<div class="container-all-forms">
+						<div class="items-container">
+						<h1>Add New Member</h1>
 							<form action="?do=Insert" method="POST">
-								<div class="form-content">
-									<!-- Name -->
 									<div class="input-field">
-										<label for="name">Name</label>
-										<input type="text" name="name" placeholder="Enter Your Name" required>
+										<span class="icon-input"><i class="fa fa-solid fa-user"></i></span>
+										<input type="text" name="name" placeholder="Enter your name">
 									</div>
-									<!-- Email -->
 									<div class="input-field">
-										<label for="email">Email</label>
-										<input type="email" name="email" placeholder="example@example.com" required>
+										<span class="icon-input"><i class="fa fa-solid fa-envelope"></i></span>
+										<input type="email" name="email" placeholder="Enter your email">
 									</div>
-									<!-- Password -->
 									<div class="input-field">
-										<label for="password">Password</label>
-										<input id="password" type="password" name="password" placeholder="At least 8 characters."required>
-										<p class="input-notes">! Password can't be empty</p>
-										<p class="input-notes">! First letter of the password should be capital.</p>
-										<p class="input-notes">! Password must contain a special character (~, !, @, #, $, %, &, *, +, =, |, ?).</p>
-										<p class="input-notes">! Password length must be greater than 8 characters</p>
+										<span class="icon-input"><i class="fa fa-solid fa-lock"></i></span>
+										<input id="password" type="password" name="password" placeholder="Enter password">
+										<span class="icon-show-password"><i class="fa-solid fa-eye"></i></span>
 									</div>
-									<!-- Confirm Password -->
+									<div class="notes">
+										<p>! first capital letter.</p>
+										<p>! special character(~!@#$%&*+=|?).</p>
+										<p>! 8 characters At Least.</p>
+									</div>
 									<div class="input-field">
-										<label for="repassword">Confirm password</label>
-										<input id="repassword" type="password" name="rePassword" placeholder="Retype the password in this field." required>
+										<span class="icon-input"><i class="fa fa-solid fa-lock"></i></span>
+										<input id="rePassword" type="password" name="rePassword" placeholder="Confirm password">
 									</div>
-									<!-- User Access -->
-									<div class="input-field">
-										<label for="userAccess">User Access</label>
-										<select name="userRole" id="userAccess">
-											<option value="Admin" selected>Admin</option>
-											<option value="Client">Client</option>
-											<option value="Freelancer">Freelancer</option>
-										</select>
+									<div class="check">
+										<label class="radio">
+											<input type="radio" class="radio-value" name="userRole" value="Admin" checked>
+											Admin
+										</label>
+										<label class="radio">
+											<input type="radio" class="radio-value" name="userRole" value="Client">
+											Client
+										</label>
+										<label class="radio">
+											<input type="radio" class="radio-value" name="userRole" value="Freelancer">
+											Freelancer
+										</label>
 									</div>
-									<!-- Phone Number -->
-									<div class="input-field">
-										<label for="phoneNumber">Phone number</label>
-										<input type="tel" name="phoneNumber" id="phoneNumber" placeholder="+20">
+									<div class="input-field" id="field-phoneNumber">
+										<span class="icon-input"><i class="fa fa-solid fa-phone"></i></span>
+										<input type="tel" name="phoneNumber" placeholder="+20 Phone Number">
 									</div>
-								</div>
-								<!-- Buttons -->
-								<div class="buttons">
-									<input type="submit" value="Add Member">
-									<input type="reset" value="Reset">
-								</div>
+									<input class="button-submit-reset" id="submit-button" type="submit" value="Add Member">
+									<input class="button-submit-reset" type="reset" value="Reset">
 							</form>
 						</div>
 						<?php
@@ -208,19 +203,14 @@
 					//! End Add Member Page.
 					//! Start Insert Data.
 					elseif ($do == 'Insert') {
-						// Condition to check if request method is POST or GET.
-						if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-							// Get Values From Inputs.
+						if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 							$name 			 = htmlspecialchars($_POST['name']);
 							$email 			 = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 							$password 	 = htmlspecialchars($_POST['password']);
 							$rePassword	 = htmlspecialchars($_POST['rePassword']);
 							$userRole 	 = htmlspecialchars($_POST['userRole']);
 							$phoneNumber = filter_var($_POST['phoneNumber'], FILTER_SANITIZE_NUMBER_INT);
-							// str_split() -> Convert a string to an array
-							// All Upper Case Characters In Array.
 							$upperCase 	 = str_split('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
-							// Empty Array Will Use To Give It The Errors.
 							$errors 		 = [];
 							if (empty($name) && empty($email)) {
 								$errors[] = 'All fields are required.';
@@ -234,11 +224,14 @@
 										$errors[] = 'You must enter valid email.';
 									}
 									else {
-										if ($userRole == 'Freelancer' && empty($phoneNumber) && filter_var($phoneNumber, FILTER_VALIDATE_INT)) {
+										if ($userRole === 'Freelancer' && empty($phoneNumber) && !filter_var($phoneNumber, FILTER_VALIDATE_INT)) {
 											$errors[] = 'The freelancer must enter their phone number.';
 										}
+										if (strlen($phoneNumber) > 11) {
+											$errors[] = 'Invalid Phone Number';
+										}
 										else {
-											if ($userRole != 'Freelancer' || empty($phoneNumber)) {
+											if ($userRole !== 'Freelancer' || empty($phoneNumber)) {
 												$phoneNumber = null;
 											}
 										}
@@ -249,15 +242,11 @@
 								$errors[] = 'Password can\'t be empty';
 							}
 							else {
-								// in_array() -> Checks if a value exists in an array
 								if (!in_array($password[0], $upperCase)) {
 									$errors[] = 'First letter of the password should be capital.';
 								}
 								else {
-									// strlen() -> Get string length.
 									for ($i=0; $i<strlen($password); $i++) {
-										// strpos() -> Find the position of the first occurrence of a substring in a string.
-										// If Password Not Have Special Character The Variable $count Will Be value 0 else The Value Will Be 1.
 										if (!strpos('~!@#$%&*+=|?', $password[$i]) !== false) {
 											$count = 0;
 										}else {
@@ -265,11 +254,10 @@
 											break;
 										}
 									}
-									if ($count == 0) {
+									if ($count === 0) {
 										$errors[] = 'Password must contain a special character (~, !, @, #, $, %, &, *, +, =, |, ?).';
 									}
 									else {
-										// strlen() -> Get string length.
 										if (strlen($password) < 8) {
 											$errors[] = 'Password length must be greater than 8 characters';
 										}
@@ -281,7 +269,6 @@
 									}
 								}
 							}
-							// Verify That There Are No Errors In The Array.
 							if (!empty($errors)) {
 								echo '<div class="messages-in-back">';
 								foreach ((array)$errors as $error) {
@@ -293,7 +280,6 @@
 								exit();
 							}
 							else {
-								// SQL query [SELECT].
 								$stmt = $CONDB->prepare("SELECT
 																								`Email`
 																					FROM
@@ -301,32 +287,26 @@
 																					WHERE
 																								`Email` = ?
 																					LIMIT 1");
-								// execute query.
 								$stmt->execute([$email]);
-								// Returns the number of rows affected by the last SQL query.
 								$count = $stmt->rowCount();
-								// Check The Email Entered By The User If It Exists Or Not.
-								if ($count == 1) {
+								$stmt = null;
+								if ($count === 1) {
 									echo '<div class="messages-in-back">';
 										messages('Warning', 'You can\'t use this email because it already exist.');
-										include $pages . ('loader.html');
-										header('refresh:5, members.php?do=Add');
-										exit();
 									echo '</div>';
+									include $pages . ('loader.html');
+									header('refresh:5, members.php?do=Add');
+									exit();
 								}
 								else {
-									// password_hash — Creates a password hash
 									$hashedPassword	= password_hash($password, PASSWORD_DEFAULT);
-									// SQL query [INSERT].
 									$stmt = $CONDB->prepare("INSERT INTO
 																											`users`(`ID`, `Name`, `Email`, `Password`, `UserRole`, `PhoneNumber`, `UserDate`)
 																								VALUES
 																											(?, ?, ?, ?, ?, ?, now())");
-									// execute query.
 									$stmt->execute([unique_id(), $name, $email, $hashedPassword, $userRole, $phoneNumber]);
-									// Returns the number of rows affected by the last SQL query.
 									$count = $stmt->rowCount();
-									// Check Whether The Data Has Been Recorded In The Database.
+									$stmt = null;
 									if ($count == 1) {
 										echo '<div class="messages-in-back">';
 											messages('Success', 'The account has been created. You will be directed to the members page.');
@@ -337,7 +317,7 @@
 									}
 									else {
 										echo '<div class="messages-in-back">';
-											messages('Denger', 'An error occurred, try again.');
+											messages('Denger', 'An error occurred, try again. You will be directed to the add members page.');
 										echo '</div>';
 										include $pages . ('loader.html');
 										header('refresh:5, members.php?do=Add');
@@ -357,71 +337,59 @@
 					}
 					//! End Insert Data.
 					//! Start Edit Data.
-					elseif ($do == 'Edit') {
-						// isset() 			=> Determines if a variable is declared other than NULL.
-						// is_numeric() => Finds whether a variable is a number or a numeric string
-						// intval() 		=> The numerical value is converted to an integer.
+					elseif ($do === 'Edit') {
 						$userID = isset($_GET['userID']) && is_numeric($_GET['userID']) ? intval($_GET['userID']) : 0;
-						// SQL query [SELECT].
 						$stmt = $CONDB->prepare("SELECT * FROM `users` WHERE ID = ?");
-						// execute query.
 						$stmt->execute([$userID]);
-						// Fetch Data From Database.
 						$row = $stmt->fetch();
-						// Returns the number of rows affected by the last SQL statement.
 						$count = $stmt->rowCount();
-						// Check that there is data for this ID or not.
-						if ($count == 1) {
+						$stmt = null;
+						if ($count === 1) {
 							?>
-							<div class="form-pages">
-								<h1 class="form-name">Update Member</h1>
-								<form action="?do=Update" method="POST">
-									<div class="form-content">
-										<!--ID -->
-										<input hidden type="text" name="id" value="<?= $row['ID']?>">
-										<!-- Name -->
-										<div class="input-field">
-											<label for="name">Name</label>
-											<input type="text" value="<?= $row['Name']; ?>" name="name" required>
-										</div>
-										<!-- Email -->
-										<div class="input-field">
-											<label for="email">Email</label>
-											<input type="email" value="<?= $row['Email']; ?>" name="email" required>
-										</div>
-										<!-- New Password -->
-										<div class="input-field">
-											<label for="password">New Password</label>
-											<input hidden type="password" value="<?= $row['Password']; ?>" name="oldPassword">
-											<input id="password" type="password" name="newPassword" placeholder="Leave blank if you don't want to change.">
-										</div>
-										<!-- Confirm password -->
-										<div class="input-field">
-											<label for="repassword">Confirm password</label>
-											<input id="repassword" type="password" name="rePassword" placeholder="Retype the password in this field.">
-										</div>
-										<!-- User Access -->
-										<div class="input-field">
-											<label for="userAccess">User Access</label>
-											<select name="userRole" id="userAccess">
-												<option value="Admin" <?php if($row['UserRole'] == 'Admin'){echo 'selected';} ?>>Admin</option>
-												<option value="Client" <?php if($row['UserRole'] == 'Client'){echo 'selected';} ?>>Client</option>
-												<option value="Freelancer" <?php if($row['UserRole'] == 'Freelancer'){echo 'selected';} ?>>Freelancer</option>
-											</select>
-										</div>
-										<!-- Phone Number -->
-										<div class="input-field">
-											<label for="phoneNumber">Phone number</label>
-											<input type="tel" name="phoneNumber" value="0<?= $row['PhoneNumber'] ?>" id="phoneNumber">
-										</div>
+								<div class="container-all-forms">
+									<div class="items-container">
+										<h1>Update Member</h1>
+										<form action="?do=Update&userID=<?=$_GET['userID']?>" method="POST">
+											<div class="input-field">
+												<span class="icon-input"><i class="fa fa-solid fa-user"></i></span>
+												<input type="text" name="name" value="<?=$row['Name'];?>" placeholder="Enter your name">
+											</div>
+											<div class="input-field">
+												<span class="icon-input"><i class="fa fa-solid fa-envelope"></i></span>
+												<input type="email" name="email" value="<?=$row['Email'];?>" placeholder="Enter your email">
+											</div>
+											<div class="input-field">
+												<span class="icon-input"><i class="fa fa-solid fa-lock"></i></span>
+												<input hidden type="password" value="<?=$row['Password'];?>" name="oldPassword">
+												<input id="password" type="password" name="newPassword" placeholder="Leave blank if you don't want to change.">
+												<span class="icon-show-password"><i class="fa-solid fa-eye"></i></span>
+											</div>
+											<div class="input-field">
+												<span class="icon-input"><i class="fa fa-solid fa-lock"></i></span>
+												<input id="rePassword" type="password" name="rePassword" placeholder="Confirm password">
+											</div>
+											<div class="check">
+												<label class="radio">
+													<input type="radio" class="radio-value" name="userRole" value="Admin" <?php if($row['UserRole'] === 'Admin'){echo 'checked';}?>>
+													Admin
+												</label>
+												<label class="radio">
+													<input type="radio" class="radio-value" name="userRole" value="Client" <?php if($row['UserRole'] === 'Client'){echo 'checked';} ?>>
+													Client
+												</label>
+												<label class="radio">
+													<input type="radio" class="radio-value" name="userRole" value="Freelancer" <?php if($row['UserRole'] === 'Freelancer'){echo 'checked';} ?>>
+													Freelancer
+												</label>
+											</div>
+											<div class="input-field" id="field-phoneNumber">
+												<span class="icon-input"><i class="fa fa-solid fa-phone"></i></span>
+												<input type="tel" name="phoneNumber" placeholder="+20 Phone Number" value="0<?= $row['PhoneNumber']?>">
+											</div>
+											<input class="button-submit-reset" id="submit-button" type="submit" value="Update Member">
+											<input class="button-submit-reset" type="reset" value="Reset">
+										</form>
 									</div>
-									<!-- Buttons -->
-									<div class="buttons">
-										<input type="submit" value="Update">
-										<input type="reset" value="Reset">
-									</div>
-								</form>
-							</div>
 							<?php
 						}
 						else {
@@ -435,23 +403,16 @@
 					}
 					//! End Edit Data.
 					//! Start Update Data.
-					elseif ($do == 'Update') {
-						// Condition to check if request method is POST or GET.
-						if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-							// Get Values From Inputs.
-							$id 				 = $_POST['id'];
+					elseif ($do === 'Update') {
+						if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+							$id 				 = $_GET['userID'];
 							$name 			 = htmlspecialchars($_POST['name']);
 							$email 			 = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 							$userRole 	 = htmlspecialchars($_POST['userRole']);
 							$phoneNumber = filter_var($_POST['phoneNumber'], FILTER_SANITIZE_NUMBER_INT);
 							$rePassword  = htmlspecialchars($_POST['rePassword']);
-							// If the new password field is empty, enter the old password in the variable.
-							// If the new password field contains values, put the value of the new password into the variable.
 							$newPassword = empty($_POST['newPassword']) ? $_POST['oldPassword'] : $_POST['newPassword'];
-							// str_split() -> Convert a string to an array
-							// All Upper Case Characters In Array.
 							$upperCase 	 = str_split('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
-							// Empty Array Will Use To Give It The Errors.
 							$errors 		 = [];
 							if (empty($name) && empty($email)) {
 								$errors[] = 'All fields are required.';
@@ -465,11 +426,14 @@
 										$errors[] = 'You must enter valid email.';
 									}
 									else {
-										if ($userRole == 'Freelancer' && empty($phoneNumber) && filter_var($phoneNumber, FILTER_VALIDATE_INT)) {
+										if ($userRole === 'Freelancer' && empty($phoneNumber) && !filter_var($phoneNumber, FILTER_VALIDATE_INT)) {
 											$errors[] = 'The freelancer must enter their phone number.';
 										}
+										if (strlen($phoneNumber) > 11) {
+											$errors[] = 'Invalid Phone Number';
+										}
 										else {
-											if ($userRole != 'Freelancer' || empty($phoneNumber)) {
+											if ($userRole !== 'Freelancer' || empty($phoneNumber)) {
 												$phoneNumber = null;
 											}
 										}
@@ -481,15 +445,11 @@
 							}
 							else {
 								if ($newPassword != $_POST['oldPassword']) {
-									// in_array() -> Checks if a value exists in an array
 									if (!in_array($newPassword[0], $upperCase)) {
 										$errors[] = 'First letter of the password should be capital.';
 									}
 									else {
-										// strlen() -> Get string length.
 										for ($i=0; $i<strlen($newPassword); $i++) {
-											// strpos() -> Find the position of the first occurrence of a substring in a string.
-											// If Password Not Have Special Character The Variable $count Will Be value 0 else The Value Will Be 1.
 											if (!strpos('~!@#$%&*+=|?', $newPassword[$i]) !== false) {
 												$count = 0;
 											}else {
@@ -501,7 +461,6 @@
 											$errors[] = 'Password must contain a special character (~, !, @, #, $, %, &, *, +, =, |, ?).';
 										}
 										else {
-											// strlen() -> Get string length.
 											if (strlen($newPassword) < 8) {
 												$errors[] = 'Password length must be greater than 8 characters';
 											}
@@ -517,39 +476,34 @@
 									}
 								}
 							}
-							// Verify That There Are No Errors In The Array.
 							if (!empty($errors)) {
 								echo '<div class="messages-in-back">';
 									foreach ((array)$errors as $error) {
 										messages('Warning', $error);
 									}
-									echo '</div>';
-									include $pages . ('loader.html');
-									header("refresh:5, members.php?do=Edit&userID=$id");
-									exit();
+								echo '</div>';
+								include $pages . ('loader.html');
+								header("refresh:5, ./members.php?do=Edit&userID=$id");
+								exit();
 							}
 							else {
-								// SQL query [SELECT].
 								$stmt = $CONDB->prepare("SELECT * FROM
 																											`users`
 																									WHERE
 																											`Email` = ?
 																										AND
 																											`ID` != ?");
-								// execute query.
 								$stmt->execute([$email, $id]);
-								// Returns the number of rows affected by the last SQL query.
 								$count = $stmt->rowCount();
-								// Check The Email Entered By The User If It Exists Or Not.
-								if ($count == 1) {
+								$stmt = null;
+								if ($count === 1) {
 									echo '<div class="messages-in-back">';
 										messages('Warning', 'You can\'t use this email because it already exist.');
-										header("refresh:5, members.php?do=Edit&userID=$id");
 									echo '</div>';
+									header("refresh:5, members.php?do=Edit&userID=$id");
 									exit();
 								}
 								else {
-									// SQL query [UPDATE].
 									$stmt = $CONDB->prepare("UPDATE
 																									`users`
 																							SET
@@ -560,25 +514,24 @@
 																									`Password` = ?
 																						WHERE
 																									`ID` = ?");
-									// execute query.
 									$stmt->execute([$name, $email, $userRole, $phoneNumber, $newPassword, $id]);
-									// Returns the number of rows affected by the last SQL query.
 									$count = $stmt->rowCount();
-									// Check Whether The Data Has Been Updated Or Not.
-									if ($count = 1) {
+									$stmt = null;
+									if ($count == 1) {
 										echo '<div class="messages-in-back">';
 											messages('Success', 'The data has been updated successfully.');
 										echo '</div>';
 										include $pages . ('loader.html');
-										header("refresh:5, members.php?do=Edit&userID=$id");
+										header("refresh:5, ./members.php?do=Edit&userID=$id");
 										exit();
 									}
 									else {
+										$upperCase 	 = str_split('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
 										echo '<div class="messages-in-back">';
 											messages('Denger', 'This user cannot be updated.');
 										echo '</div>';
 										include $pages . ('loader.html');
-										header("refresh:5, members.php?do=Edit&userID=$id");
+										header("refresh:5, ./members.php?do=Edit&userID=$id");
 										exit();
 									}
 								}
@@ -589,33 +542,24 @@
 								messages('Denger', 'You Can\'t Access This Page Directly.');
 							echo '</div>';
 							include $pages . ('loader.html');
-							header('refresh:3, members.php');
+							header('refresh:3, ./members.php');
 							exit();
 						}
 					}
 					//! End Update Data.
 					//! Start Delete Data.
-					elseif ($do == 'Delete') {
-						// isset() 			=> Determines if a variable is declared other than NULL.
-						// is_numeric() => Finds whether a variable is a number or a numeric string.
-						// intval() 		=> The numerical value is converted to an integer.
+					elseif ($do === 'Delete') {
 						$userID = isset($_GET['userID']) && is_numeric($_GET['userID']) ? intval($_GET['userID']) : 0;
-						// SQL query [SELECT].
 						$stmt = $CONDB->prepare("SELECT * FROM `users` WHERE ID = ?");
-						// execute query.
 						$stmt->execute([$userID]);
-						// Returns the number of rows affected by the last SQL query.
 						$count = $stmt->rowCount();
-						// Check The ID Is Exist Or Not.
-						if ($count == 1) {
-							// SQL query [DELETE].
+						$stmt = null;
+						if ($count === 1) {
 							$stmt = $CONDB->prepare("DELETE FROM `users` WHERE ID = ?");
-							// execute query.
 							$stmt->execute([$userID]);
-							// Returns the number of rows affected by the last SQL statement.
 							$count = $stmt->rowCount();
-							// Check Whether The Data Has Been Deleted Or Not.
-							if ($count == 1) {
+							$stmt = null;
+							if ($count === 1) {
 								echo '<div class="messages-in-back">';
 									messages('Success', 'You have now deleted the user.');
 									echo '</div>';
@@ -646,7 +590,7 @@
 				else {
 					echo '<div class="messages-in-back">';
 						messages('Denger', 'You can\'t access this page.It will be taken back to the login page after 5 seconds.');
-						echo '</div>';
+					echo '</div>';
 					include $pages . ('loader.html');
 					header('refresh:5,../logout.php');
 					exit();
@@ -657,4 +601,10 @@
 	</div>
 <?php
 	require $temp . ('end.body.php');
+	if ($do === 'Add') {
+		echo '<script>addNewMember();</script>';
+	}
+	if ($do === 'Edit') {
+		echo '<script>editMember();</script>';
+	}
 ?>

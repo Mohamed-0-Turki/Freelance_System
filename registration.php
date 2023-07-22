@@ -65,7 +65,7 @@
 							break;
 						}
 					}
-					if ($count == 0) {
+					if ($count === 0) {
 						$errors[] = 'Password must contain a special character (~, !, @, #, $, %, &, *, +, =, |, ?).';
 					}
 					else {
@@ -139,7 +139,7 @@
 ?>
 <div class="container-form-login-signup">
 	<div class="items-container">
-		<h1>Sign up | <a href="main.php">Freelance</a></h1>
+		<h1>Sign up | <a href="./main.php">Freelance</a></h1>
 		<form action="<?php $_SERVER['PHP_SELF']?>" method="POST">
 			<div class="input-field">
 				<span class="icon-input"><i class="fa fa-solid fa-user"></i></span>

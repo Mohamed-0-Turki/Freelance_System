@@ -1,5 +1,5 @@
 <header class="header">
-	<a href="../main.php" class="site-name">freelance</a>
+	<a href="../main.php#" class="site-name">freelance</a>
 	<input type="checkbox" id="menu-bar">
 	<label class="menu-bar" for="menu-bar"><i class="fa-solid fa-bars"></i></label>
 	<nav class="navbar">
@@ -19,8 +19,8 @@
 						}
 						else {
 							?>
-								<li><a href="login.php">Login</a></li>
-								<li><a href="registration.php">Sign Up</a></li>
+								<li><a href="../login.php">Login</a></li>
+								<li><a href="../registration.php">Sign Up</a></li>
 							<?php
 						}
 						?>
@@ -31,28 +31,28 @@
 			<!-- Dashboard -->
 			<?php
 				if (isset($_SESSION['NAME'])) {
-					if ($_SESSION['ACCESS'] == 'Admin' || $_SESSION['ACCESS'] == 'Client') {
-						$dashboardName = isset($_SESSION['ACCESS']) && $_SESSION['ACCESS'] == 'Admin' ? 'Dashboard' : 'Jobs | Messages';
+					if ($_SESSION['ACCESS'] === 'Admin' || $_SESSION['ACCESS'] === 'Client') {
+						$dashboardName = isset($_SESSION['ACCESS']) && $_SESSION['ACCESS'] === 'Admin' ? 'Dashboard' : 'Jobs | Messages';
 						?>
 							<li>
 								<a><?=$dashboardName?> <i class="fa-solid fa-caret-down"></i></a>
 								<ul>
 									<?php
-										if ($_SESSION['ACCESS'] == 'Admin') {
+										if ($_SESSION['ACCESS'] === 'Admin') {
 											?>
-												<li><a href="dashboard.php">Dashboard</a></li>
+												<li><a href="./dashboard.php">Dashboard</a></li>
 												<li>
 													<a>Members <i class="fa-solid fa-caret-down"></i></a>
 													<ul>
-														<li><a href="members.php?do=Manage&userID=<?php echo $_SESSION['ID']?>">All Members</a></li>
-														<li><a href="members.php?do=Add">Add Member</a></li>
+														<li><a href="./members.php?do=Manage&userID=<?=$_SESSION['ID']?>">All Members</a></li>
+														<li><a href="./members.php?do=Add">Add Member</a></li>
 													</ul>
 												</li>
 												<li>
 													<a>Categories <i class="fa-solid fa-caret-down"></i></a>
 													<ul>
-														<li><a href="Category.php?do=Manage">All Categories</a></li>
-														<li><a href="Category.php?do=Add">Add Category</a></li>
+														<li><a href="./category.php?do=Manage">All Categories</a></li>
+														<li><a href="./category.php?do=Add">Add Category</a></li>
 													</ul>
 												</li>
 											<?php
@@ -62,24 +62,24 @@
 										<a>Jobs <i class="fa-solid fa-caret-down"></i></a>
 										<ul>
 											<?php
-											if ($_SESSION['ACCESS'] == 'Admin') {
+											if ($_SESSION['ACCESS'] === 'Admin') {
 												?>
-													<li><a href="jobs.php?do=Manage&AccessControl=AllJobs">All Jobs</a></li>
+													<li><a href="./jobs.php?do=Manage&AccessControl=AllJobs">All Jobs</a></li>
 												<?php
 											}
 											?>
-											<li><a href="jobs.php?do=Manage">My Jobs</a></li>
-											<li><a href="jobs.php?do=Add">Add Job</a></li>
+											<li><a href="./jobs.php?do=Manage">My Jobs</a></li>
+											<li><a href="./jobs.php?do=Add">Add Job</a></li>
 										</ul>
 									</li>
-									<li><a href="messages.php">Messages</a></li>
+									<li><a href="./messages.php">Messages</a></li>
 								</ul>
 							</li>
 						<?php
 					}
-					if ($_SESSION['ACCESS'] == 'Freelancer') {
+					if ($_SESSION['ACCESS'] === 'Freelancer') {
 						?>
-							<li><a href="messages.php">Messages</a></li>
+							<li><a href="./messages.php">Messages</a></li>
 						<?php
 					}
 				}

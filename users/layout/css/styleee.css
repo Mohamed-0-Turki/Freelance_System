@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100;200;300;400;500;600;700;800;900&display=swap');
 /* TODO: Start Style HTML */
 * {
     box-sizing: border-box;
     text-decoration: none;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Geologica', sans-serif;
     line-height: 1;
     padding: 0;
     margin: 0;

@@ -5,21 +5,21 @@ require ('initialize.php');
 if (isset($_SESSION['NAME'])) {
 	if ($_SESSION['ACCESS'] == 'Admin') {
 		//! Start Delete Data.
-		if (isset($_GET['do']) && $_GET['do'] == 'Delete') {
+		if (isset($_GET['do']) && $_GET['do'] === 'Delete') {
 			$FeedbackID = isset($_GET['FeedbackID']) && is_numeric($_GET['FeedbackID']) ? intval($_GET['FeedbackID']) : 0;
 			$stmt = $CONDB->prepare("SELECT * FROM `feedback` WHERE `FeedbackID` = ?");
 			$stmt->execute([$FeedbackID]);
 			$count = $stmt->rowCount();
-			if ($count == 1) {
+			$stmt = null;
+			if ($count === 1) {
 				$stmt = $CONDB->prepare("DELETE FROM `feedback` WHERE `FeedbackID` = ?");
 				$stmt->execute([$FeedbackID]);
 				$count = $stmt->rowCount();
-				if ($count == 1) {
+				$stmt = null;
+				if ($count === 1) {
 					echo '<div class="messages-in-back">';
 						messages('Success', 'You have now deleted the feedback.');
 					echo '</div>';
-					header('refresh:0.00000005,dashboard.php#feedback');
-					exit();
 				}
 				else {
 					echo '<div class="messages-in-back">';
@@ -41,7 +41,7 @@ if (isset($_SESSION['NAME'])) {
 					<?php
 						$userID = $_SESSION['ID'];
 						if (isset($_SESSION['NAME']) || isset($_COOKIE)) {
-							if ($_SESSION['ACCESS'] == 'Admin') {
+							if ($_SESSION['ACCESS'] === 'Admin') {
 								?>
 									<div class="name-of-page">
 										<h1>Dashboard</h1>
@@ -49,7 +49,7 @@ if (isset($_SESSION['NAME'])) {
 									<div class="details">
 										<!--Box All Users -->
 										<div class="box">
-											<a href="members.php?do=Manage&userID=<?php echo $userID;?>">
+											<a href="./members.php?do=Manage&userID=<?=$userID;?>">
 												<span class="icon"><i class="fa-solid fa-users"></i></span>
 												<p class="num"><?php counter('users', "");?></p>
 												<p class="box-name">All Users</p>
@@ -57,28 +57,28 @@ if (isset($_SESSION['NAME'])) {
 										</div>
 										<!--Box All categories -->
 										<div class="box">
-											<a href="category.php">
+											<a href="./category.php">
 												<p class="num"><?php counter('categories', "");?></p>
 												<p class="box-name">All categories</p>
 											</a>
 										</div>
 										<!--Box All Jobs -->
 										<div class="box">
-											<a href="jobs.php?do=Manage&AccessControl=AllJobs">
+											<a href="./jobs.php?do=Manage&AccessControl=AllJobs">
 												<p class="num"><?php counter('jobs', "");?></p>
 												<p class="box-name">All Jobs</p>
 											</a>
 										</div>
 										<!--Box All My Jobs -->
 										<div class="box">
-											<a href="jobs.php">
+											<a href="./jobs.php">
 												<p class="num"><?php counter('jobs', "WHERE `MemberID` = $userID");?></p>
 												<p class="box-name">My Jobs</p>
 											</a>
 										</div>
 										<!--Box Messages -->
 										<div class="box">
-											<a href="messages.php">
+											<a href="./messages.php">
 												<span class="icon"><i class="fa-solid fa-message"></i></span>
 												<p class="num"><?php counter('messages', "WHERE `JobPublisher` = $userID");?></p>
 												<p class="box-name">Messages</p>
@@ -88,7 +88,7 @@ if (isset($_SESSION['NAME'])) {
 									<div class="more-than-one-table">
 										<!-- Table Users -->
 										<div class="table-content">
-											<a href="members.php">
+											<a href="./members.php">
 												<div class="name-of-page name-of-table">
 													<h1>Latest Users</h1>
 												</div>
@@ -115,7 +115,7 @@ if (isset($_SESSION['NAME'])) {
 										</div>
 										<!-- Table Categories -->
 										<div class="table-content">
-											<a href="category.php">
+											<a href="./category.php">
 												<div class="name-of-page name-of-table">
 													<h1>Latest Categories</h1>
 												</div>
@@ -142,7 +142,7 @@ if (isset($_SESSION['NAME'])) {
 										</div>
 										<!-- Table Jobs -->
 										<div class="table-content">
-											<a href="jobs.php">
+											<a href="./jobs.php">
 												<div class="name-of-page name-of-table">
 													<h1>Latest Jobs</h1>
 												</div>
@@ -199,7 +199,7 @@ if (isset($_SESSION['NAME'])) {
 															echo '<td>' . $row['FeedbackDate'] . '</td>';
 															echo '<td> 
 																<div class="table-btn">
-																	<a href="dashboard.php?do=Delete&FeedbackID='.$row['FeedbackID'].'" class="del-btn">Delete</a>
+																	<a href="./dashboard.php?do=Delete&FeedbackID='.$row['FeedbackID'].'" class="del-btn">Delete</a>
 																</div>
 															</td>';
 														echo '</tr>';
