@@ -1,0 +1,117 @@
+/* TODO: Start Style Loader */
+.Loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 50vh;
+}
+.Loader .ring {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  animation: ring 2s linear infinite;
+  -webkit-animation: ring 2s linear infinite;
+}
+@keyframes ring {
+  0% {
+      transform: rotate(0deg);
+      box-shadow: 1px 5px 2px #FFAC41;
+  }
+  50% {
+      transform: rotate(180deg);
+      box-shadow: 1px 5px 2px #ff8041;
+  }
+  100% {
+      transform: rotate(360deg);
+      box-shadow: 1px 5px 2px #ff1e56;
+  }
+}
+.Loader .ring:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--darkWhite-color);
+}
+.Loader span {
+  color: var(--primary2-color);
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+/* TODO: End Style Loader */
+/* TODO: Start Style Three Dots */
+.coming-soon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 60vh;
+}
+.coming-soon p {
+  color: var(--primary-color);
+  font-size: 60px;
+  font-weight: 900;
+  text-align: center;
+  margin: 15px;
+  text-shadow: 10px 10px 9px var(--secondary-color);
+}
+.coming-soon .three-dot {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 160px;
+  height: 100px;
+}
+.coming-soon .three-dot span {
+  display: block;
+  background-color: var(--primary2-color);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 10px 10px 9px var(--secondary-color);
+}
+.coming-soon .three-dot .dot-one {
+  animation-name: up-to-down;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-delay: -1.4s;
+}
+.coming-soon .three-dot .dot-two {
+  animation-name: up-to-down;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-delay: -1.7s;
+}
+.coming-soon .three-dot .dot-three {
+  animation-name: up-to-down;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-delay: -2s;
+}
+@keyframes up-to-down {
+  0% {
+      transform: translateY(30px);
+  }
+  25% {
+      transform: translateY(-30px);
+  }
+  50% {
+      transform: translateY(30px);
+  }
+  75% {
+      transform: translateY(-30px);
+  }
+  100% {
+      transform: translateY(30px);
+  }
+}
+/* TODO: End Style Three Dots */

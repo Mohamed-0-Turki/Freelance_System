@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100vh;
+  height: auto;
 }
 
 .container-all-forms .items-container {
@@ -37,6 +37,15 @@
   justify-content: center;
   gap: 30px;
   width: 100%;
+}
+.container-all-forms .items-container .img {
+  width: 300px;
+  height: 300px;
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
 }
 .container-all-forms .items-container form .notes {
   display: flex;
@@ -73,6 +82,7 @@
 }
 .container-all-forms .items-container form .textarea-field {
   height: fit-content;
+  align-items: baseline;
 }
 .container-all-forms .items-container form .input-field input {
     background-color: var(--darkWhite-color);
@@ -87,6 +97,20 @@
     -moz-border-radius: var(--radius-input);
     -ms-border-radius: var(--radius-input);
     -o-border-radius: var(--radius-input);
+}
+.container-all-forms .items-container form .input-field select {
+  background-color: var(--darkWhite-color);
+  font-size: 18px;
+  padding: 5px;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  border-radius: var(--radius-input);
+  -webkit-border-radius: var(--radius-input);
+  -moz-border-radius: var(--radius-input);
+  -ms-border-radius: var(--radius-input);
+  -o-border-radius: var(--radius-input);
 }
 .container-all-forms .items-container form .input-field textarea {
   background-color: var(--darkWhite-color);

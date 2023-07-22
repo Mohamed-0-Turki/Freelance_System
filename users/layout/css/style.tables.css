@@ -1,0 +1,133 @@
+/* TODO: Start Style Table */
+.container .more-than-one-table {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.container .table-content {
+margin-top: 50px;
+  min-width: 225px;
+}
+.container .table-content table {
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(32, 32, 32, 30%);
+  width: 100%;
+}
+.container .table-content table thead tr th,
+.container .table-content table tbody tr td {
+  padding: 12px 15px;
+}
+.container .table-content table tbody tr .max-width-text {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  white-space: normal;
+  overflow: auto;
+  max-width: 242px;
+  max-height: 150px;
+  padding-left: 17px;
+}
+.container .table-content table thead tr th {
+  background-color: var(--primary2-color);
+  color: var(--darkWhite-color);
+  text-transform: uppercase;
+}
+.container .table-content table thead tr th:first-child {
+  border-radius: 12px 0 0 0;
+  -webkit-border-radius: 12px 0 0 0;
+  -moz-border-radius: 12px 0 0 0;
+  -ms-border-radius: 12px 0 0 0;
+  -o-border-radius: 12px 0 0 0;
+}
+.container .table-content table thead tr th:last-child {
+  border-radius: 0 12px 0 0;
+  -webkit-border-radius: 0 12px 0 0;
+  -moz-border-radius: 0 12px 0 0;
+  -ms-border-radius: 0 12px 0 0;
+  -o-border-radius: 0 12px 0 0;
+}
+.container .table-content table tbody td img {
+  width: 140px;
+  height: 140px;
+  border-radius: 100%;
+}
+.container .table-content table tr:nth-child(odd) {
+  background-color: var(--darkWhite-color);
+}
+.container .table-content table tbody tr td .table-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.container .table-content table tbody tr td .table-btn a {
+  padding: 8px 15px;;
+  border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+  color: var(--white-color);
+}
+.container .table-content table tbody tr td .table-btn .edit-btn {
+  background-color: #0b9df5;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+.container  .table-content table tbody tr td .table-btn .edit-btn:hover {
+  background-color: #0f99ee;
+}
+.container .table-content table tbody tr td .table-btn .accept-btn {
+  background-color: #00eb56;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+.container  .table-content table tbody tr td .table-btn .accept-btn:hover {
+  background-color: #13d058;
+}
+.container  .table-content table tbody tr td .table-btn .del-btn {
+  background-color: #fa1a1a;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  margin-left: 5px;
+}
+.container  .table-content table tbody tr td .table-btn .del-btn:hover {
+  background-color: #e30000;
+}
+.container  .table-content table tbody tr td ol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+@media(max-width: 1230px) {
+  .container  .table-content {
+      width: 100%;
+      overflow-y: hidden;
+      overflow-x: scroll;
+  }
+  .container  .table-content table {
+      width: 900px;
+      overflow: scroll;
+  }
+}
+/* TODO: End Style Table */

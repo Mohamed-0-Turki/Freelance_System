@@ -150,54 +150,55 @@
 					//! Start Add Member Page.
 					elseif ($do === 'Add') {
 						?>
-					<div class="container-all-forms">
-						<div class="items-container">
-						<h1>Add New Member</h1>
-							<form action="?do=Insert" method="POST">
-									<div class="input-field">
-										<span class="icon-input"><i class="fa fa-solid fa-user"></i></span>
-										<input type="text" name="name" placeholder="Enter your name">
-									</div>
-									<div class="input-field">
-										<span class="icon-input"><i class="fa fa-solid fa-envelope"></i></span>
-										<input type="email" name="email" placeholder="Enter your email">
-									</div>
-									<div class="input-field">
-										<span class="icon-input"><i class="fa fa-solid fa-lock"></i></span>
-										<input id="password" type="password" name="password" placeholder="Enter password">
-										<span class="icon-show-password"><i class="fa-solid fa-eye"></i></span>
-									</div>
-									<div class="notes">
-										<p>! first capital letter.</p>
-										<p>! special character(~!@#$%&*+=|?).</p>
-										<p>! 8 characters At Least.</p>
-									</div>
-									<div class="input-field">
-										<span class="icon-input"><i class="fa fa-solid fa-lock"></i></span>
-										<input id="rePassword" type="password" name="rePassword" placeholder="Confirm password">
-									</div>
-									<div class="check">
-										<label class="radio">
-											<input type="radio" class="radio-value" name="userRole" value="Admin" checked>
-											Admin
-										</label>
-										<label class="radio">
-											<input type="radio" class="radio-value" name="userRole" value="Client">
-											Client
-										</label>
-										<label class="radio">
-											<input type="radio" class="radio-value" name="userRole" value="Freelancer">
-											Freelancer
-										</label>
-									</div>
-									<div class="input-field" id="field-phoneNumber">
-										<span class="icon-input"><i class="fa fa-solid fa-phone"></i></span>
-										<input type="tel" name="phoneNumber" placeholder="+20 Phone Number">
-									</div>
-									<input class="button-submit-reset" id="submit-button" type="submit" value="Add Member">
-									<input class="button-submit-reset" type="reset" value="Reset">
-							</form>
-						</div>
+							<div class="container-all-forms">
+								<div class="items-container">
+									<h1>Add New Member</h1>
+									<form action="?do=Insert" method="POST">
+										<div class="input-field">
+											<span class="icon-input"><i class="fa fa-solid fa-user"></i></span>
+											<input type="text" name="name" placeholder="Enter your name">
+										</div>
+										<div class="input-field">
+											<span class="icon-input"><i class="fa fa-solid fa-envelope"></i></span>
+											<input type="email" name="email" placeholder="Enter your email">
+										</div>
+										<div class="input-field">
+											<span class="icon-input"><i class="fa fa-solid fa-lock"></i></span>
+											<input id="password" type="password" name="password" placeholder="Enter password">
+											<span class="icon-show-password"><i class="fa-solid fa-eye"></i></span>
+										</div>
+										<div class="notes">
+											<p>! first capital letter.</p>
+											<p>! special character(~!@#$%&*+=|?).</p>
+											<p>! 8 characters At Least.</p>
+										</div>
+										<div class="input-field">
+											<span class="icon-input"><i class="fa fa-solid fa-lock"></i></span>
+											<input id="rePassword" type="password" name="rePassword" placeholder="Confirm password">
+										</div>
+										<div class="check">
+											<label class="radio">
+												<input type="radio" class="radio-value" name="userRole" value="Admin">
+												Admin
+											</label>
+											<label class="radio">
+												<input type="radio" class="radio-value" name="userRole" value="Client">
+												Client
+											</label>
+											<label class="radio">
+												<input type="radio" class="radio-value" name="userRole" value="Freelancer" checked>
+												Freelancer
+											</label>
+										</div>
+										<div class="input-field" id="field-phoneNumber">
+											<span class="icon-input"><i class="fa fa-solid fa-phone"></i></span>
+											<input type="tel" name="phoneNumber" placeholder="+20 Phone Number">
+										</div>
+										<input class="button-submit-reset" id="submit-button" type="submit" value="Add Member">
+										<input class="button-submit-reset" type="reset" value="Reset">
+									</form>
+								</div>
+							</div>
 						<?php
 					}
 					//! End Add Member Page.
@@ -390,6 +391,7 @@
 											<input class="button-submit-reset" type="reset" value="Reset">
 										</form>
 									</div>
+								</div>
 							<?php
 						}
 						else {

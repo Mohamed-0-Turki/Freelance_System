@@ -72,14 +72,9 @@
 											<li><a href="./jobs.php?do=Add">Add Job</a></li>
 										</ul>
 									</li>
-									<li><a href="./messages.php">Messages</a></li>
+									<li><a href="./messages.php?do=Manage">Messages</a></li>
 								</ul>
 							</li>
-						<?php
-					}
-					if ($_SESSION['ACCESS'] === 'Freelancer') {
-						?>
-							<li><a href="./messages.php">Messages</a></li>
 						<?php
 					}
 				}

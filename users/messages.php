@@ -10,7 +10,7 @@
 				if (isset($_SESSION['NAME'])) {
           $userID = $_SESSION['ID'];
 					$do = isset($_GET['do']) ? $_GET['do'] : 'Manage';
-          if ($do == 'Manage') {
+          if ($do === 'Manage') {
             $sortArray = ['ASC', 'DESC'];
             $sort = 'DESC';
             if (isset($_GET['sort']) && in_array($_GET['sort'], $sortArray)) {
@@ -20,7 +20,7 @@
                                           `messages`.*,
                                           `jobs`.`JobTitle`
                                       FROM
-                                          `Messages`
+                                          `messages`
                                 INNER JOIN
                                           `jobs`
                                         ON
@@ -31,11 +31,11 @@
                                           `Date` $sort");
             $stmt->execute([$userID]);
             $rows = $stmt->fetchAll();
+            $stmt = null;
             ?>
               <div class="name-of-page">
                 <h1>Messages</h1>
               </div>
-              <!--Box All categories -->
               <div class="details">
                 <div class="box">
                   <a href="#messages">
@@ -104,32 +104,21 @@
             <?php
           }
 					//! Start Delete Data.
-					elseif ($do == 'Delete') {
-						// isset() 			=> Determines if a variable is declared other than NULL.
-						// is_numeric() => Finds whether a variable is a number or a numeric string.
-						// intval() 		=> The numerical value is converted to an integer.
+					elseif ($do === 'Delete') {
 						$MessageID = isset($_GET['MessageID']) && is_numeric($_GET['MessageID']) ? intval($_GET['MessageID']) : 0;
-						// SQL query [SELECT].
 						$stmt = $CONDB->prepare("SELECT * FROM `messages` WHERE MessageID = ?");
-						// execute query.
 						$stmt->execute([$MessageID]);
-						// Returns the number of rows affected by the last SQL query.
 						$count = $stmt->rowCount();
-						// Check The ID Is Exist Or Not.
 						if ($count == 1) {
-							// SQL query [DELETE].
 							$stmt = $CONDB->prepare("DELETE FROM `messages` WHERE MessageID = ?");
-							// execute query.
 							$stmt->execute([$MessageID]);
-							// Returns the number of rows affected by the last SQL statement.
 							$count = $stmt->rowCount();
-							// Check Whether The Data Has Been Deleted Or Not.
 							if ($count == 1) {
                 echo '<div class="messages-in-back">';
 								  messages('Success', 'You have now deleted the message.');
                 echo '</div>';
                 include $pages . ('loader.html');
-								header('refresh:0.00000005,messages.php?do=Manage');
+								header('refresh:0.00000005, ./messages.php?do=Manage');
 								exit();
 							}
 							else {
@@ -137,7 +126,7 @@
 								  messages('Denger', 'This user cannot be deleted.');
                   echo '</div>';
                 include $pages . ('loader.html');
-								header('refresh:5,messages.php?do=Manage');
+								header('refresh:5, ./messages.php?do=Manage');
 								exit();
 							}
 						}
@@ -146,7 +135,7 @@
 							  messages('Denger', 'THIS ID IS NOT EXIST.');
               echo '</div>';
               include $pages . ('loader.html');
-              header('refresh:5,messages.php?do=Manage');
+              header('refresh:5, ./messages.php?do=Manage');
               exit();
 						}
 					}

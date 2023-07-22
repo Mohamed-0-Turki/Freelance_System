@@ -7,8 +7,13 @@
 	<!-- CSS links -->
 	<link rel="stylesheet" href="<?= $css?>all.css">
 	<link rel="stylesheet" href="<?= $css?>fontawesome.css">
-	<link rel="stylesheet" href="<?= $css?>styleee.css">
-	<link rel="stylesheet" href="<?= $css?>all.forms.css">
+	<link rel="stylesheet" href="<?= $css?>style.css">
+	<link rel="stylesheet" href="<?= $css?>style.all.forms.css">
+	<link rel="stylesheet" href="<?= $css?>style.box.details.css">
+	<link rel="stylesheet" href="<?= $css?>style.search.bar.css">
+	<link rel="stylesheet" href="<?= $css?>style.tables.css">
+	<link rel="stylesheet" href="<?= $css?>style.animation.css">
+	<link rel="stylesheet" href="<?= $css?>style.error.mesages.css">
 	<title><?php pageTitle();?></title>
 </head>
 <body>

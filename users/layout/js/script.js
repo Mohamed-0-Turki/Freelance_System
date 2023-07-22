@@ -39,7 +39,7 @@ function addNewMember() {
     });
     radioInputs.forEach(radioInput => {
         radioInput.addEventListener("click", () => {
-            phoneNumber.style = radioInput.value === "Client" ? "display: none;" : "dispaly: block;"
+            phoneNumber.style = radioInput.value === "Client" || radioInput.value === "Admin" ? "display: none;" : "dispaly: block;"
         })
     });
 

@@ -1,0 +1,58 @@
+/* TODO: Start Style Box Details*/
+.container .details{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 50px;
+}
+.container .details .box {
+	background-color: var(--primary2-color);
+	width: 150px;
+	height: 150px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 12px;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	-ms-border-radius: 12px;
+	-o-border-radius: 12px;
+	box-shadow: 0 2px 115px rgba(32, 32, 32, 30%);
+}
+.container .details .box a{
+	color: var(--white-color);
+	text-align: center;
+	box-shadow: 0 2px 115px rgba(32, 32, 32, 30%);
+
+}
+.container .details .box:hover {
+	box-shadow: 0 2px 115px rgba(255, 30, 86, 30%);
+	cursor: pointer;
+	transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+}
+.container .details .box:hover a{
+	color: var(--secondary-color);
+	box-shadow: 0 2px 115px rgba(32, 32, 32, 30%);
+	transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+}
+.container .details .box a .box-name{
+	font-size: 25px;
+}
+.container .details .box a .icon {
+	font-size: 45px;
+}
+.container .details .box a .num {
+font-size: 45px;
+margin: 7px 0;
+}
+/* TODO: End Style Box Details*/

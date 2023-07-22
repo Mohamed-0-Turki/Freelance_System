@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="<?= $css?>style.home.page.css">
 	<link rel="stylesheet" href="<?= $css?>style.profile.css">
 	<link rel="stylesheet" href="<?= $css?>style.browse.jobs.css">
-	<link rel="stylesheet" href="<?= $css?>style.all.job.css">
+	<link rel="stylesheet" href="<?= $css?>style.all.jobs.css">
 	<link rel="stylesheet" href="<?= $css?>style.apply.css">
 	<link rel="stylesheet" href="<?= $css?>style.error.messages.css">
 	<link rel="stylesheet" href="<?= $css?>style.animation.css">

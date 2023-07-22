@@ -1,0 +1,54 @@
+/* TODO: Start Stile Search Bar */
+.container .search-bar {
+	display: grid;
+	justify-content: space-around;
+	margin-top: 50px;
+}
+.container .search-bar form {
+	display: grid;
+	align-items: center;
+	grid-template-columns: repeat(7, 1fr);
+	grid-template-areas: "icon input input input input input button";
+	background-color: var(--darkWhite-color);
+	padding: 3px;
+	border-radius: var(--radius-input);
+	-webkit-border-radius: var(--radius-input);
+	-moz-border-radius: var(--radius-input);
+	-ms-border-radius: var(--radius-input);
+	-o-border-radius: var(--radius-input);
+}
+.container .search-bar form .search-icon {
+	grid-area: icon;
+	color: var(--secondary-color);
+	padding: 0px 5px;
+}
+.container .search-bar form:hover .search-icon {
+	color: var(--red-color);
+}
+.container .search-bar form input[type="search"] {
+	grid-area: input;
+	background-color: inherit;
+	font-size: var(--input-font-size);
+	padding: var(--input-text-padding);
+	border: none;
+	outline: none;
+}
+.container .search-bar form input[type="submit"] {
+	grid-area: button;
+	background-color: var(--secondary-color);
+	color: var(--white-color);
+	font-size: var(--button-font-weight);
+	font-weight: var(--button-font-weight);
+	padding: 10px;
+	border: none;
+	border-radius: inherit;
+	-webkit-border-radius: inherit;
+	-moz-border-radius: inherit;
+	-ms-border-radius: inherit;
+	-o-border-radius: inherit;
+}
+.container .search-bar form input[type="submit"]:hover {
+	cursor: pointer;
+	background-color: var(--red-color);
+}
+/* TODO: End Stile Search Bar */
