@@ -50,9 +50,6 @@
 							else {
 								if ($remmberMe == 1) {
 									setcookie('ID', $row['ID'], time() + 60*60*24*30*12, '/');
-									// setcookie('NAME', $row['Name'], time() + 60*60*24*30*12, '/');
-									// setcookie('ACCESS', $row['UserRole'], time() + 60*60*24*30*12, '/');
-									// setcookie('EMAIL', $email, time() + 60*60*24*30*12, '/');
 									header('Location: ./index.php');
 									exit();
 								}
