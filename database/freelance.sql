@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 08, 2023 at 10:16 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Host: localhost
+-- Generation Time: Jul 24, 2023 at 08:25 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,13 +41,13 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`CategoryID`, `CategoryName`, `CategoryTitle`, `CategoryDescription`, `CategoryPhoto`, `CategoryDate`) VALUES
-(1, 'Programming', 'Programming is the process of creating a set of instructions that tell a computer how to perform a task.', 'Computer programs (or software) are what makes computers work. Without software, modern computers are just complicated machines for turning electricity into heat. It’s software on your computer that runs your operating system, browser, email, games, movie player – just about everything.', '9374_3426526.jpg', '2020-04-16 00:00:00'),
-(3, 'Cook', 'You will cook dishes that will delight our customers with their taste and timely delivery.', 'An excellent cook must be able to follow instructions in cooking and delivering well-prepared meals. They must be deft in moving around the kitchen and apt in multi-tasking. Experience in using various ingredients and cooking techniques is also important.', '4137_double-hamburger-isolated-white-background-fresh-burger-fast-food-with-beef-cream-cheese.jpg', '2022-04-16 00:00:00'),
-(4, 'Commerce', 'Commerce involves the exchange of goods and services, often for a profit', 'Commerce is essential to the global economy. It encompasses everything related to the buying and selling of goods and services at both the wholesale and retail levels.', '7605_634.jpg', '2021-04-16 00:00:00'),
-(5, 'Other', 'Uncategorized jobs', 'There are too many jobs here for which there is no proper classification.', '5857_3185113.jpg', '2024-04-16 00:00:00'),
-(102, 'Engineering Oil Gas Energy', 'Engineering Oil Gas Energy Jobs in Egypt', 'Oil and gas engineering refers to the design, implementation and operation of technical processes focused on the exploration and production of crude oil and natural gas. Once oil and gas are discovered, oil and gas engineers become involved in the process of extracting these resources from reservoirs, often working with specialists such as geoscientists to understand the underlying rock formation, determine the best drilling methods and to monitor daily operations.', '7808_44655.jpg', '2023-04-24 00:00:00'),
-(103, 'Android jobs', 'An Android Developer is a Software Developer who specializes in designing applications for the Android marketplace.', 'An Android Developer is a Software Developer who specializes in designing applications for the Android marketplace. The Android marketplace is the direct competitor to Apple&#039;s app store. This means most of an Android Developer&#039;s job revolves around creating the apps we use on our smartphones and tablets.\r\n', '9589_19021594.jpg', '2023-04-25 00:00:00'),
-(105, 'Doctor', 'A doctor is responsible for all sides of care of a patient.', 'A doctor is responsible for all sides of care of a patient. They diagnose, educate, and treat patients to ensure that they have the best possible care. A few of the main duties of a doctor are performing diagnostic tests, recommending specialists for patients, document patient&#039;s medical history, and educating patients.\r\n', '7685_young-handsome-physician-medical-robe-with-stethoscope.jpg', '2023-05-01 23:29:12');
+(115, 'IT Software Development Jobs', 'Apply to Software Engineer, Developer, Junior Software Engineer and more!', 'Software Engineering Jobs in Egypt· Computer Science &amp; Computer Engineering Fresh · Junior Software Engineer · Senior Odoo Developer.', '6780_www.usnews.jpg', '2023-07-24 20:36:22'),
+(116, 'Android Mobile', 'Search Android jobs in Egypt with company ratings &amp; salaries.', 'Android Mobile Developer jobs available on Ifreelance.com. Apply to Android Developer, Mobile Developer, Senior .NET Developer and more!', '6254_Android_phone.jpg', '2023-07-24 20:39:18'),
+(117, 'Education Teaching Jobs', 'New Teaching Jobs &amp; Vacancies this Month / Apply for the latest Teaching careers in Egypt ', 'As the majority of teaching jobs in Egypt are for certified public school teachers, there are not many ESL teaching jobs in Egypt for non-certified teachers.', '8442_Summer-Jobs-for-Teachers.jpg', '2023-07-24 20:42:12'),
+(118, 'Fashion Jobs', 'Fashion, Sneakers for men, women, and kids.', 'Fashion is a form of self-expression with a specific context, such as time, place and purpose. Example of these are clothing, footwear, lifestyle.', '8283_img_2_03930c00-69d1-461b-89ba-d64871e48e0e.png', '2023-07-24 20:44:40'),
+(119, 'Sales/Retail', 'A Retail Sales Representative is a customer-oriented professional who assists shoppers in finding the right products', 'Retail sales tracks consumer demand for finished goods by measuring the purchases of durable and non-durable goods over a defined period of time.', '2712_Retail-Sales-2.jpg', '2023-07-24 20:46:50'),
+(120, 'Analyst/Research', 'Analyst Research Laboratories is a GLP, GMP and GCLP accredited, US-FDA inspected Chemical Analytical Contract Laboratory.', 'Analyst Research Jobs in Egypt162 Jobs found · GIS Database Manager · Project Coordinator · Cost Accountant · Digital Marketing Executive · Budget Analyst.', '2796_equity-research-career-path-and-qualifications_round1-ec5d344bad634c5999cecd376a547d7f.png', '2023-07-24 20:48:58'),
+(121, 'Engineering Telecom Technology', 'Technology, engineering and telecom marketing strategies can help you dominate your market and gain a competitive advantage.', 'Telecommunications engineering is a subfield of electronics engineering which seeks to design and devise systems of communication at a distance.', '9300_networking-technologies.jpg', '2023-07-24 20:51:00');
 
 -- --------------------------------------------------------
 
@@ -63,6 +63,15 @@ CREATE TABLE `feedback` (
   `Message` text NOT NULL,
   `FeedbackDate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`FeedbackID`, `Name`, `Email`, `Subject`, `Message`, `FeedbackDate`) VALUES
+(23, 'mohamed', 'mohamed@gmail.com', 'hello world', 'erorr erorr erorr erorr erorr erorr erorr erorr erorr erorr erorr erorr erorr erorr erorr erorr ', '2023-07-24 21:14:38'),
+(24, 'ahmed', 'ahmed123@gmail.com', 'hi iam ahmed', 'mmcd cadscn scdcsnc cscmsc csdsm\r\n', '2023-07-24 21:15:28'),
+(25, 'mostafa', 'mostafa545@gmail.com', 'hi iam mostafa', 'hack hack hack', '2023-07-24 21:16:00');
 
 -- --------------------------------------------------------
 
@@ -86,10 +95,12 @@ CREATE TABLE `jobs` (
 --
 
 INSERT INTO `jobs` (`JobID`, `JobTitle`, `JobSalary`, `JobDescription`, `JobSkills`, `JobDate`, `MemberID`, `CatID`) VALUES
-(1, 'web developer', 2500, 'A web developer is a programmer who develops World Wide Web applications using a client–server model. The applications typically use HTML, CSS, and JavaScript in the client, and any general-purpose programming language in the server.\r\n', 'HTML-CSS-JS-PHP-MySQL', '2023-04-17 00:00:00', '1', 1),
-(102, 'Medical Claims Coordinator (Medicine universities ONLY)', 500, 'Performing technical audit on medical claims (inpatient and outpatient).\r\nAuditing of invoice and Ensuring that all the medical bills are within the contracted price list and the approval criteria according to Mersal policy.\r\nJustifying the rejection reasons on system in rejection cases to facilitate the reconciliation process.\r\nEnsuring the best service given to the patients by providers.\r\nReport to the direct manager any irregularity or problems noticed during the audit and/or closing of claims.\r\nPrepares reports by collecting, analyzing, and summarizing information of the reviewed claims to assess the quality of our payment and create a cost effective solution.\r\nCoordinate workflow &amp; meet deadlines.', 'Bachelor&#039;s Degree in Medicine and Surgery.-Strong communication skills.\r\n', '2023-05-01 00:00:00', '1', 105),
-(113, 'Flutter Developer', 5000, 'We are looking for an experienced Flutter Developer who will join our talented software team that works on mission-critical applications. Your duties will include managing Flutter (Android, iOS) application development while providing expertise in the full software development lifecycle, from concept and design to testing.', 'Good communication skills.-Strong problem-solving skills.-Team worker.-Very comfortable learning new technologies, tools, and platforms.-Highly motivated.-Initiative and passionate.-Strong problem-solving skills.-Team worker.-Very comfortable learning new technologies, tools,and platforms.-Highly motivated.-Have shipped applications to the App Store or Google Play Store.', '2023-05-09 00:00:00', '7743439441683647536', 103),
-(115, 'Executive Chef', 33000, 'Our restaurant is searching for a creative and motivated sous chef to join our talented kitchen team. In this position, you will act as the third in command in our kitchen, following and enforcing our executive chef’s and Head chefs’ requirements and guidelines. Our ideal candidate is a creative professional who is willing to participate in creating delicious seasonal menus and meal designs.', 'Proven working experience as a Head Chef-Excellent record of kitchen management-Ability to spot and resolve problems efficiently-Capable of delegating multiple tasks-Communication and leadership skills-Keep up with cooking trends and best practices-Working knowledge of various computer software programs (MS Office, restaurant management software, POS)', '2023-05-09 00:00:00', '7743439441683647536', 3);
+(122, 'Technical Support Specialist', 700, '- Providing IT assistance to staff.\r\n- Offer technical support to company staff and troubleshoot computer problems.\r\n- Training company staff on hardware functionality and software programs.\r\n- Resolving logged errors in a timely manner.\r\n- Monitoring hardware, software, and system performance metrics.\r\n- Updating computer software. as well as upgrading hardware and systems.\r\n- Maintaining databases and ensuring system security.\r\n- Documenting processes and performing diagnostic tests.\r\n- Keeping track of technological advancements and trends in IT support.\r\n- Review diagnostics and assess the functionality and efficiency of systems.\r\n- Implement security measures.', 'A bachelor&#039;s degree in computer science, information technology, or similar.-2-4 years of experience as an IT support specialist.-Exceptional ability to provide technical support and resolve queries.-In-depth knowledge of computer hardware, software, and networks.-Ability to determine IT needs and train end-users.-Proficiency in IT help desk software, such as Fresh service.-Experience in documenting processes and monitoring performance metrics.-Advanced knowledge of database maintenance and system security.-Ability to keep up with technical innovation and trends in IT support.-Exceptional interpersonal and communication skills.', '2023-07-24 20:56:45', '1', 121),
+(123, 'Customer Service Manager', 1000, 'Negotiating all contracts with prospective clients.To build a strong relationship with customers and Take the extra mile to engage the customer.\r\nTo resolve product or service problems by clarifying the customer&#039;s complaint; determining the cause of the problem; selecting and explaining the best solution to solve the problem and following up to ensure resolution.\r\nHosting clients in events, draft newsletters and dispatch them to the clients to stay tuned.\r\nSend greetings to clients in social events (Ramadan, Eid , New Year….etc) by mail or SMS.\r\nCollecting installments from customers.\r\nNegotiating all contracts with prospective clients.', 'Proven Working Experience as Customer Service Specialist not less than 7years.-Real Estate Background is must-Excellent Communication, Presentation and problem solving skills.-Excellent user of Excel and MS Office use to merge information and emails.-Males Only.', '2023-07-24 20:59:00', '1', 119),
+(124, 'Structural Technical Office Engineer', 1500, 'To perform the duties of Structural Technical Office Engineer, which includes preparing structural shop drawings bar bending Schedules, bill of quantities.\r\nDesign review.\r\nCollaborate and Coordinate with all disciplines ( Arch. , MEP, Civil works) through  Revit drawings .\r\nRaising RFI if needed due clashes or design problems (if needed).\r\nValue engineering of structural design to minimize cost if possible.\r\nPreparation of method of statements.', 'Experience in drafting software ( Revit).-Problem-solving and judgment skills.-Adaptability and communication skills.', '2023-07-24 21:00:51', '1', 115),
+(125, 'Android Developer', 3000, '    Develop new features for our existing Android applications, debugging/fixing problems.\r\n    Collaborate with cross-functional teams to define, design, and ship new features. A Familiarity of Firebase analytics, cloud messaging, real-time database, storage and crash reporting.\r\n    Unit-test code for robustness, including edge cases, usability, and general reliability.\r\n    Work with the QA team.\r\n    Participate in team meetings.\r\n    Report regularly on work progress.\r\n    Work on bug fixing and improving application performance.\r\n    Good knowledge of Android SDK, different versions of Android, and how to deal with different screen sizes.\r\n    Ability to understand business requirements and translate them into technical.', ' Solid understanding of the full mobile development life cycle.-Good familiarity with RESTful APIs to connect Android applications to back-end services.-Understand the challenges being addressed by an engagement and collaborate with team members, clients, and stakeholders to deliver a valuable technical solution.-Good knowledge of Android UI design principles, patterns, and best practices.-Have a good experience with offline storage, threading, and performance tuning.', '2023-07-24 21:04:28', '8353297891690221742', 116),
+(126, 'Operations and Logistics Coordinator', 6000, 'We are looking for an Motivated logistics and Operations coordinators to manage all aspects of logistics throughout our supply chain. The logistics and Operation coordinator will be responsible for organizing and providing efficient Operations and storage solutions.\r\n\r\n    Plan and follow up daily logistics, customs clearance, warehouse, transportation, and distribution.\r\n    Arrange warehouse, plan routes and process shipments like Loading Products to warehouses or warehouses to stores.\r\n    Maintaining inventory storage space in the store’s warehouse.\r\n    Ensuring the safe and timely pick-up and delivery of shipments.\r\n    Monitoring shipments, costs, timelines, and productivity.\r\n    Ensure effective and timely implementation of all Logistics daily operational goals.\r\n    Developing, monitoring, writing and updating product content contained on eCommerce website.\r\n    Cultivating standards, systems and best practices for content creation, distribution, maintenance, and new product listings.', 'To be Experienced is not mandatory for this Position , we are looking for Self Motivated people can be adapted.-Preferred to be Experienced in E-commerce Logistic and Retail Fashion. -Time Management, managing one&#039;s own time and the time of others.-Reading comprehension, understanding written sentences and paragraphs in work related documents.-Speaking, talking to others to convey information effectively. ', '2023-07-24 21:06:17', '8353297891690221742', 118),
+(127, 'Senior Android Developer', 50000, 'NEXT Munich is a highly experienced, long standing App developer from Germany with a vast number of fascinating App projects and renown international clients. We are very excited to announce our venture into Egypt to broaden our developer base and to attract great talent. We have just opened our branch office in The GrEEK Campus Downtown Cairo! Do you feel like working intensively on the mobile platform for iOS and/or Android, developing cool apps for connected devices or dealing with exciting app scenarios both in a B2C and a B2B environment? Are you a dedicated developer looking to newly enter the workforce, or do you want to take the next step in your career? We are looking for you: outstanding talents who are passionate about all our App topics! As soon as you like we are hiring:', 'University degree in computer science or comparable education\r\n    -Very good knowledge of Java, Kotlin and Jetpack Compose\r\n    -3+ years experience in developing Android Apps\r\n    -Good technical understanding of web technologies such as XML, HTML, JSON-High quality standards and a sure flair for structured and readable code-Visual Studio for Mac, Git, Jira, Bitbucket, Confluence-Very good English, in speaking and writing-Nice to have: Experience with Xamarin Native Apps and MvvmCross 4', '2023-07-24 21:09:25', '2', 116);
 
 -- --------------------------------------------------------
 
@@ -106,6 +117,16 @@ CREATE TABLE `messages` (
   `FreelancerSkills` text DEFAULT NULL,
   `Date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`MessageID`, `JobPublisher`, `FreelancerID`, `CategoryID`, `JobID`, `FreelancerSkills`, `Date`) VALUES
+(28, '1', '3', 115, 124, 'skill-skill-skill-skill-skill', '2023-07-24 21:11:56'),
+(29, '1', '3', 121, 122, 'skill-skill-skill-skill-skill', '2023-07-24 21:12:17'),
+(30, '1', '3', 119, 123, 'one-two-three-four\r\n', '2023-07-24 21:12:49'),
+(31, '2', '681916321690222269', 116, 127, 'skill\r\n-skill\r\n-skill\r\n-skill', '2023-07-24 21:13:30');
 
 -- --------------------------------------------------------
 
@@ -128,18 +149,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `Name`, `Email`, `Password`, `UserRole`, `PhoneNumber`, `UserDate`) VALUES
-('1', 'Admin', 'Admin@gmail.com', '$2y$10$P3pL444ecQSxVScURIW.De2PbY.OPGFHWFJHUPzHJu2Vr9ghr.1ve', 'Admin', NULL, '2023-04-27 00:00:00'),
-('1683326213', 'subway', 'subway123123@gmail.com', '$2y$10$UPnI5EGR7gcJHXznsnHuAuH91WLwAw67zMWreuaw/Wt5BZfe0QGzW', 'Freelancer', 1283856454, '2023-05-06 01:36:53'),
-('1914374711683367008', 'Ahmed', 'Ahmedt234234@gmail.com', '$2y$10$jNlx09ZVv5Kwz94Z0WyGmePHSox0CVURHvwebeUCQ296psgwXmgs.', 'Client', NULL, '2023-05-06 12:56:48'),
-('2', 'Client', 'client@gmail.com', '$2y$10$PgNMfgz9Lho22D1b/Q/uD.wC3IObRUJQVMBLKvFrHfY1eTVcvnEde', 'Client', NULL, '2023-04-27 00:00:00'),
-('3', 'Freelancer', 'freelancer@gmail.com', '$2y$10$PgNMfgz9Lho22D1b/Q/uD.wC3IObRUJQVMBLKvFrHfY1eTVcvnEde', 'Freelancer', 1141074777, '2023-04-27 00:00:00'),
-('3742929471683625580', 'mmm', 'mmmmm@ggg', '$2y$10$kbfyVkdeCYjUt9XiCCrVh.23a.ljzzwA/Njp/E6p8m/V.x0Si8T76', 'Client', NULL, '2023-05-09 12:46:20'),
-('39556151683626337', 'Mohamed', 'M@dcs.com', '$2y$10$ngaXNA1Do745a6mjo8Z3ve8/4Dz9mEPw6vKlZWDqi1ga3KFJISnE6', 'Client', 5, '2023-05-09 12:58:57'),
-('4886991151683648966', 'ffff', 'fffff@mail.com', '$2y$10$Yco.t6lrGGdLeYzEGj8nSuEFKbXpzeFtmq8s7K.e8.bZCbXO5g9I2', 'Freelancer', 1141074777, '2023-05-09 19:16:06'),
-('5674040541683626138', 'Mohamed', 'mohadsdmed@gmail.com', '$2y$10$tLYiERL1Fg3ALaDiDCa11eMwezLAGpx3oS.Xks8VkuhzOz5ZPOpSa', 'Freelancer', 0, '2023-05-09 12:55:38'),
-('750441691683532087', 'Mohamed', 'freelancer1234@gmail.com', '$2y$10$ZW1JTiO1cINz4pjNgrskQOH9Olk0dZKQCtQk0LqTwGhiUA/0ug1S6', 'Freelancer', 1119759939, '2023-05-08 10:48:07'),
-('7743439441683647536', 'Mohamed', 'mohamed@gmail.com', '$2y$10$DvB45pCvA/Bl5BgktKArpeQOgPl6f/.ZpjPQUwNFtc9xWDtAYIuG2', 'Client', NULL, '2023-05-09 18:52:16'),
-('8229967761683531720', 'Mohamed', 'mohamed4444@gmail.com', '$2y$10$gpcuRs21NJ1BBG6UMcNYa.YXVyRs0Kfbxy16G0EAgcDkCDqQcztg.', 'Client', NULL, '2023-05-08 10:42:00');
+('1', 'Admin', 'admin@gmail.com', '$2y$10$h8cjYcNAuj7fYW0ivFlvM..8nvrghhG4uB2q4WcKrq/SQzf5u9KwS', 'Admin', NULL, '2023-07-23 01:26:21'),
+('2', 'Client', 'client@gmail.com', '$2y$10$r62PGWFfZ99Ep9G8bUQ25.YJ.1.NfoBDXdAWtIUc5Lq7Nzw7Z9zqq', 'Client', NULL, '2023-07-23 01:27:46'),
+('3', 'Freelancer', 'freelancer@gmail.com', '$2y$10$u0sxmphjNdmYSoRtl/JCY.9WsWEk1FXzB33KbppPne2NyTENDPRdO', 'Freelancer', 1141074777, '2023-07-23 01:28:57'),
+('681916321690222269', 'ahmed', 'ahmed@gmail.com', '$2y$10$bed6vIobWLEX6Pq7/EGr6O0jrGyWI8x6sc4KrV/sLo3Im/JMAEvx.', 'Freelancer', 1141074777, '2023-07-24 21:11:09'),
+('8353297891690221742', 'mohamed-client', 'mohamedclient@gmail.com', '$2y$10$sCGT7eCuQzvDhGXsBgbP1Ol5V2H25xqstIf2DobyB8hDwbNX5sERG', 'Client', NULL, '2023-07-24 21:02:22');
 
 --
 -- Indexes for dumped tables
@@ -191,25 +205,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `FeedbackID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `FeedbackID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `JobID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `JobID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `MessageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `MessageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Constraints for dumped tables

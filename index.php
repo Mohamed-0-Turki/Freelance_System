@@ -35,7 +35,7 @@ if (isset($_COOKIE)) {
 	}
 }
 else {
-	header('Location:./main.php');
+	header('Location: ./main.php');
 	exit();
 }
 ?>
