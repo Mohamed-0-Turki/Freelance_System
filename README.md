@@ -23,6 +23,7 @@ manage all of these.</h2>
 <h4>-- He is accepted for a job, he will be contacted via the WhatsApp number he entered when creating the account.</h4>
 
 <h3>❗ All Users can modify his personal data or delete the private account.</h3>
+<h3>❗ When the account is created, the user cannot create an administrator account, only administrators can add administrators</h3>
 
 <h3>Relationships between tables ⬇️</h3>
 <img src="./database/TablesRelationship.png">
