@@ -1,6 +1,13 @@
 <h1>Freelance System</h1>
+
+<h2>A lot of work can be done remotely these days, so your dreams of working
+from your couch can come true by developing a freelance program to
+manage all of these.</h2>
+
 <h2>The technologies that were used in the project are HTML | CSS | JS | PHP | MySQL</h2>
+
 <h2>🕸️ Link Site: http://freelanceweb.rf.gd/main.php</h2>
+
 <h3>There are three users, Administrator, Client, and Freelancer</h3>
 
 <h3>⭐: Administrator</h3>
